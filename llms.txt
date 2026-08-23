@@ -1,0 +1,32 @@
+# BAIDLABS
+
+> BAIDLABS is a generative & answer engine optimization (GEO + AEO) agency. We get brands cited, quoted, and recommended by AI engines — ChatGPT, Google AI Overviews, Gemini, Perplexity, Claude, Microsoft Copilot, Grok, and Meta AI — and we design and rebuild websites that are AI-ready from day one.
+
+Slogan: "Be the answer, not a result."
+Contact: baidnehum181@gmail.com
+Website: https://baidnehum18.github.io/
+
+## Services
+
+- AI Visibility Audit: prompt-by-prompt mapping of where a brand appears across ChatGPT, AI Overviews, Perplexity, Claude, Copilot, and Grok versus competitors.
+- Answer-Ready Content: content engineered to be quoted — direct answers, statistics, sourced claims, expert quotes, freshness cycles.
+- Technical GEO: schema/JSON-LD, llms.txt, AI-crawler access, entity cleanup, machine-readable site architecture.
+- Authority & Citations: digital PR and third-party presence where engines pull from; brand mentions correlate with AI visibility ~3x more strongly than backlinks.
+- Share-of-Voice Monitoring: structured prompt panels tracking citation frequency, sentiment, and competitor share across engines, over time.
+- Ongoing Optimization: monthly iteration — refresh decaying content, expand into new question spaces, report what moved.
+- Websites, Built & Rebuilt: new website design and rebuilds that are GEO/AEO-ready from the first line of code.
+
+## Process
+
+1. Audit (week 1-2): map the question space, baseline AI visibility per engine.
+2. Strategy (week 2-3): choose target prompts, competitors to displace, entity/content/authority gaps.
+3. Implement (week 3-8): ship answer-ready content, fix technical signals, land third-party citations.
+4. Compound (ongoing): monitor share of voice, refresh, expand.
+
+## Selected work
+
+- MS Interio (https://msinterio.in): complete website design & build for an interior design studio in Jaipur, India — residential, commercial, and turnkey interiors; 35+ projects; 250,000+ sq. ft. designed; studio established 2019.
+
+## Offer
+
+Free GEO audit: current visibility across 6+ AI engines, the prompts where competitors win, and a prioritized 90-day plan — delivered as a document the client keeps.
