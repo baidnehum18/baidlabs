@@ -1,9 +1,9 @@
-# BAIDLABS — baidnehum18.github.io
+# BAIDLABS — baidnehum18.github.io/baidlabs
 
 Static one-page site for BAIDLABS (GEO + AEO agency), served by GitHub Pages
-from the root of this repository.
+from the root of this repository as a project site.
 
-**Live:** https://baidnehum18.github.io/
+**Live:** https://baidnehum18.github.io/baidlabs/
 
 ## Files
 
@@ -12,7 +12,7 @@ from the root of this repository.
 | `index.html` | The whole site — HTML, CSS and JS in one self-contained file |
 | `og.jpg` | Link-preview image used when the site is shared |
 | `logo.png` | Square logo referenced by the structured data |
-| `robots.txt` | Welcomes search + AI crawlers (GPTBot, ClaudeBot, PerplexityBot…) |
+| `robots.txt` | Reference copy only — crawlers read the one in the `baidnehum18.github.io` repo |
 | `llms.txt` | Plain-language summary of the business for AI engines |
 | `sitemap.xml` | Sitemap for crawlers |
 | `.nojekyll` | Tells GitHub Pages to serve the files as-is |
@@ -37,11 +37,18 @@ event fires on every successful form submission.
 
 If the site moves to e.g. `baidlabs.com`:
 
-1. Find-and-replace `baidnehum18.github.io` with the new domain in
+1. Find-and-replace `baidnehum18.github.io/baidlabs` with the new domain in
    `index.html`, `robots.txt`, `sitemap.xml`, `llms.txt`.
 2. Add a `CNAME` file containing the bare domain.
 3. Point DNS at GitHub Pages and set the custom domain in **Settings → Pages**.
 4. Update the stream URL in Google Analytics.
+
+## Crawler directives live in a separate repo
+
+`robots.txt` is only honoured at a domain root, and this site sits at the
+`/baidlabs/` path. The authoritative `robots.txt` — plus a redirect from the
+bare `baidnehum18.github.io` root to this site — lives in the separate
+**`baidnehum18.github.io`** repository. Edit crawler rules there, not here.
 
 ## After launch
 
