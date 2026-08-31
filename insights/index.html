@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO Insights — Guides to AI Search Visibility | BAIDLABS</title>
+<meta name="description" content="Practical guides to generative and answer engine optimization: how AI engines choose sources, the technical foundations, and how to measure AI visibility.">
+<link rel="canonical" href="https://baidnehum18.github.io/baidlabs/insights/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GEO Insights — Guides to AI Search Visibility | BAIDLABS">
+<meta property="og:description" content="Practical guides to generative and answer engine optimization: how AI engines choose sources, the technical foundations, and how to measure AI visibility.">
+<meta property="og:url" content="https://baidnehum18.github.io/baidlabs/insights/">
+<meta property="og:site_name" content="BAIDLABS">
+<meta property="og:image" content="https://baidnehum18.github.io/baidlabs/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GEO Insights — Guides to AI Search Visibility | BAIDLABS">
+<meta name="twitter:description" content="Practical guides to generative and answer engine optimization: how AI engines choose sources, the technical foundations, and how to measure AI visibility.">
+<meta name="twitter:image" content="https://baidnehum18.github.io/baidlabs/og.jpg">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232438ff'/%3E%3Cpath d='M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://baidnehum18.github.io/baidlabs/insights/#page",
+      "url": "https://baidnehum18.github.io/baidlabs/insights/",
+      "name": "GEO Insights — guides to generative & answer engine optimization",
+      "description": "Practical guides to getting cited by AI engines: how GEO works, how engines choose sources, technical foundations, measurement, and industry playbooks.",
+      "isPartOf": {
+        "@id": "https://baidnehum18.github.io/baidlabs/#website"
+      },
+      "publisher": {
+        "@id": "https://baidnehum18.github.io/baidlabs/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://baidnehum18.github.io/baidlabs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Insights",
+          "item": "https://baidnehum18.github.io/baidlabs/insights/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "What is generative engine optimization?",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/what-is-generative-engine-optimization.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "GEO vs SEO: what actually changes",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/geo-vs-seo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How ChatGPT decides what to recommend",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/how-chatgpt-chooses-what-to-recommend.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to appear in Google AI Overviews",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/google-ai-overviews.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "How to get cited by Perplexity",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/perplexity-optimization.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "How to measure AI visibility",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/how-to-measure-ai-visibility.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "The technical GEO checklist",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "GEO for local businesses",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/geo-for-local-business.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "GEO for interior designers",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/geo-for-interior-designers.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "GEO for real estate",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/geo-for-real-estate.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "GEO for hotels and resorts",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/geo-for-hotels.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "How much does GEO cost in India?",
+          "url": "https://baidnehum18.github.io/baidlabs/insights/how-much-does-geo-cost-in-india.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+.ins-hero{padding:150px 0 10px}
+.ins-hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem);max-width:820px;margin-bottom:20px}
+.ins-hero p{color:var(--muted);font-size:1.1rem;max-width:600px}
+.ins-group{margin-bottom:76px}
+.ins-head{margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--ink)}
+.ins-head h2{font-size:1.9rem;margin-bottom:6px}
+.ins-head p{color:var(--muted);font-size:.95rem}
+.ins-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.ins-card{border:1px solid var(--line);border-radius:16px;background:var(--paper-2);padding:26px 26px 24px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
+.ins-card:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 16px 40px rgba(16,16,20,.07)}
+.ins-n{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--blue);margin-bottom:14px}
+.ins-t{font-family:var(--serif);font-size:1.35rem;line-height:1.2;margin-bottom:10px}
+.ins-d{color:var(--muted);font-size:.9rem;flex:1;margin-bottom:16px}
+.ins-m{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="../" aria-label="BAIDLABS home">
+      <span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z" fill="#ffffff"/></svg></span>
+      <span>BAID<span>LABS</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../#services">Services</a>
+      <a href="../#work">Work</a>
+      <a href="../insights/" class="on">Insights</a>
+      <a href="../tools/ai-visibility-checker.html">Free checker</a>
+      <a href="../#about">About</a>
+    </nav>
+    <a href="../#contact" class="btn btn-ink btn-sm">Book a free audit</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../#services">Services</a>
+  <a href="../#work">Work</a>
+  <a href="../insights/">Insights</a>
+  <a href="../tools/ai-visibility-checker.html">Free checker</a>
+  <a href="../#about">About</a>
+  <a href="../#contact" class="btn btn-ink">Book a free audit →</a>
+</div>
+<main>
+<section class="wrap ins-hero">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="../">BAIDLABS</a> <i>/</i> <span>Insights</span>
+  </nav>
+  <h1>Everything we know about <em class="accent">getting cited</em>.</h1>
+  <p>Practical, sourced guides to generative and answer engine optimization — the same material we work from. No gated PDFs, no email wall.</p>
+</section>
+<section class="wrap" style="padding-top:56px">
+  <div class="ins-group reveal">
+    <div class="ins-head">
+      <h2>Start here</h2>
+      <p>The fundamentals of generative and answer engine optimization.</p>
+    </div>
+    <div class="ins-grid">
+      <a class="ins-card" href="what-is-generative-engine-optimization.html">
+        <span class="ins-n">01</span>
+        <span class="ins-t">What is generative engine optimization?</span>
+        <span class="ins-d">GEO is how you get AI engines to cite and recommend your brand. A plain-English definition, how it works, and how it…</span>
+        <span class="ins-m">Fundamentals · 8 min read</span>
+      </a>
+      <a class="ins-card" href="geo-vs-seo.html">
+        <span class="ins-n">02</span>
+        <span class="ins-t">GEO vs SEO: what actually changes</span>
+        <span class="ins-d">SEO optimizes for ranking on a results page. GEO optimizes for being cited inside an AI answer. What carries over,…</span>
+        <span class="ins-m">Comparison · 7 min read</span>
+      </a>
+      <a class="ins-card" href="how-much-does-geo-cost-in-india.html">
+        <span class="ins-n">03</span>
+        <span class="ins-t">How much does GEO cost in India?</span>
+        <span class="ins-d">What GEO actually costs in India — real ranges, what drives them, and how to tell a real engagement from a relabelled…</span>
+        <span class="ins-m">Pricing · 6 min read</span>
+      </a>
+    </div>
+  </div>
+  <div class="ins-group reveal">
+    <div class="ins-head">
+      <h2>How the engines work</h2>
+      <p>What actually decides whether an AI system cites you.</p>
+    </div>
+    <div class="ins-grid">
+      <a class="ins-card" href="how-chatgpt-chooses-what-to-recommend.html">
+        <span class="ins-n">04</span>
+        <span class="ins-t">How ChatGPT decides what to recommend</span>
+        <span class="ins-d">A walkthrough of the retrieval pipeline behind AI recommendations — and the specific signals that decide whether your…</span>
+        <span class="ins-m">Deep dive · 8 min read</span>
+      </a>
+      <a class="ins-card" href="google-ai-overviews.html">
+        <span class="ins-n">05</span>
+        <span class="ins-t">How to appear in Google AI Overviews</span>
+        <span class="ins-d">AI Overviews now sit above the organic results and absorb most of the clicks. Here is what determines which sources get…</span>
+        <span class="ins-m">Google · 7 min read</span>
+      </a>
+      <a class="ins-card" href="perplexity-optimization.html">
+        <span class="ins-n">06</span>
+        <span class="ins-t">How to get cited by Perplexity</span>
+        <span class="ins-d">Perplexity cites its sources inline and visibly, which makes it the most measurable AI engine — and the best place to…</span>
+        <span class="ins-m">Perplexity · 6 min read</span>
+      </a>
+    </div>
+  </div>
+  <div class="ins-group reveal">
+    <div class="ins-head">
+      <h2>Do the work</h2>
+      <p>Technical foundations and measurement you can run yourself.</p>
+    </div>
+    <div class="ins-grid">
+      <a class="ins-card" href="technical-geo-checklist.html">
+        <span class="ins-n">07</span>
+        <span class="ins-t">The technical GEO checklist</span>
+        <span class="ins-d">Crawler access, structured data, rendering, freshness signals and llms.txt — the technical foundation an AI engine…</span>
+        <span class="ins-m">Technical · 9 min read</span>
+      </a>
+      <a class="ins-card" href="how-to-measure-ai-visibility.html">
+        <span class="ins-n">08</span>
+        <span class="ins-t">How to measure AI visibility</span>
+        <span class="ins-d">You cannot improve what you don&#x27;t measure. The prompt-panel method: how to build a repeatable baseline of how AI…</span>
+        <span class="ins-m">Measurement · 8 min read</span>
+      </a>
+    </div>
+  </div>
+  <div class="ins-group reveal">
+    <div class="ins-head">
+      <h2>By industry</h2>
+      <p>Where the opportunity sits in specific markets.</p>
+    </div>
+    <div class="ins-grid">
+      <a class="ins-card" href="geo-for-local-business.html">
+        <span class="ins-n">09</span>
+        <span class="ins-t">GEO for local businesses</span>
+        <span class="ins-d">When someone asks AI for a local service provider, a few businesses get named. What decides which — and why local is…</span>
+        <span class="ins-m">Local · 7 min read</span>
+      </a>
+      <a class="ins-card" href="geo-for-interior-designers.html">
+        <span class="ins-n">10</span>
+        <span class="ins-t">GEO for interior designers</span>
+        <span class="ins-d">Design clients now start with an AI question, not a search. What decides which studios get named — and why portfolio…</span>
+        <span class="ins-m">Industry · 6 min read</span>
+      </a>
+      <a class="ins-card" href="geo-for-real-estate.html">
+        <span class="ins-n">11</span>
+        <span class="ins-t">GEO for real estate</span>
+        <span class="ins-d">Buyers ask AI about neighbourhoods, prices and builders before visiting a portal. Most agents are invisible in those…</span>
+        <span class="ins-m">Industry · 6 min read</span>
+      </a>
+      <a class="ins-card" href="geo-for-hotels.html">
+        <span class="ins-n">12</span>
+        <span class="ins-t">GEO for hotels and resorts</span>
+        <span class="ins-d">Travellers now plan itineraries by conversation. If an AI engine doesn&#x27;t know your property fits a traveller&#x27;s specific…</span>
+        <span class="ins-m">Industry · 6 min read</span>
+      </a>
+    </div>
+  </div>
+<div class="cta-band reveal">
+  <div>
+    <h3>Want this done for your brand?</h3>
+    <p>Book a free GEO audit: where you appear across 6+ AI engines today, the prompts competitors own, and a prioritized 90-day plan you keep either way.</p>
+  </div>
+  <a href="../#contact" class="btn btn-ink">Book a free audit <span class="arr">→</span></a>
+</div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="../" aria-label="BAIDLABS home">
+          <span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z" fill="#ffffff"/></svg></span>
+          <span>BAID<span>LABS</span></span>
+        </a>
+        <p>The GEO + AEO studio. We make brands the answer AI gives &mdash; and build the websites that carry them. Based in Jaipur, working worldwide.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Insights</h4>
+          <a href="../insights/what-is-generative-engine-optimization.html">What is GEO?</a>
+          <a href="../insights/geo-vs-seo.html">GEO vs SEO</a>
+          <a href="../insights/how-chatgpt-chooses-what-to-recommend.html">How ChatGPT chooses</a>
+          <a href="../insights/">All guides</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="../#services">Services</a>
+          <a href="../work/ms-interio.html">Case study</a>
+          <a href="../#about">About</a>
+          <a href="../tools/ai-visibility-checker.html">Free AI visibility checker</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="mailto:baidnehum181@gmail.com">baidnehum181@gmail.com</a>
+          <a href="tel:+919680196821">+91 96801 96821</a>
+          <span>Jaipur, Rajasthan, India</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; <span id="year">2026</span> BAIDLABS &middot; Jaipur, India. All rights reserved.</span>
+      <span>Built to be cited.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById("nav");
+  function s(){nav.classList.toggle("scrolled",window.scrollY>10)}
+  window.addEventListener("scroll",s,{passive:true});s();
+  var b=document.getElementById("burger"),m=document.getElementById("mobileMenu");
+  b.addEventListener("click",function(){
+    var o=m.classList.toggle("open");b.classList.toggle("open",o);
+    b.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":"";
+  });
+  m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
+    m.classList.remove("open");b.classList.remove("open");document.body.style.overflow="";
+  })});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},
+      {threshold:.1,rootMargin:"0px 0px -30px 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  } else {document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")})}
+  document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

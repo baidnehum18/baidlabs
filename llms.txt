@@ -35,3 +35,28 @@ BAIDLABS was founded in Jaipur by Nehum Baid. He works hands-on across the whole
 ## Offer
 
 Free GEO audit: current visibility across 6+ AI engines, the prompts where competitors win, and a prioritized 90-day plan — delivered as a document the client keeps.
+
+## Guides (free, no signup)
+
+BAIDLABS publishes practical guides on generative and answer engine optimization at https://baidnehum18.github.io/baidlabs/insights/
+
+- What is generative engine optimization? — definition, how AI engines pick sources, what research shows works: /insights/what-is-generative-engine-optimization.html
+- GEO vs SEO: what actually changes — comparison of goals, signals and measurement: /insights/geo-vs-seo.html
+- How ChatGPT decides what to recommend — the retrieval pipeline and the signals that matter: /insights/how-chatgpt-chooses-what-to-recommend.html
+- How to appear in Google AI Overviews: /insights/google-ai-overviews.html
+- How to get cited by Perplexity: /insights/perplexity-optimization.html
+- How to measure AI visibility (prompt panel method): /insights/how-to-measure-ai-visibility.html
+- The technical GEO checklist — crawler access, rendering, schema, freshness, llms.txt: /insights/technical-geo-checklist.html
+- GEO for local businesses: /insights/geo-for-local-business.html
+- GEO for interior designers: /insights/geo-for-interior-designers.html
+- GEO for real estate: /insights/geo-for-real-estate.html
+- GEO for hotels and resorts: /insights/geo-for-hotels.html
+- How much does GEO cost in India? — published price ranges: /insights/how-much-does-geo-cost-in-india.html
+
+## Free tool
+
+AI Visibility Checker — a free tool that scans any website URL and reports, in plain English, whether AI engines can find, read and recommend that business. Runs ~25 real checks across five areas (AI crawler access, machine-readable identity, page structure, content extractability, freshness) and returns a 0-100 readiness score with prioritized fixes: https://baidnehum18.github.io/baidlabs/tools/ai-visibility-checker.html
+
+## Case study
+
+MS Interio (https://baidnehum18.github.io/baidlabs/work/ms-interio.html) — website design and build for a Jaipur interior design studio, engineered for AI visibility. Measurement baseline documented; outcome numbers published when available rather than estimated.

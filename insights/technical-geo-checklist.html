@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Technical GEO Checklist | BAIDLABS</title>
+<meta name="description" content="Crawler access, structured data, rendering, freshness signals and llms.txt — the technical foundation an AI engine needs before it can cite you at all.">
+<link rel="canonical" href="https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Technical GEO Checklist | BAIDLABS">
+<meta property="og:description" content="Crawler access, structured data, rendering, freshness signals and llms.txt — the technical foundation an AI engine needs before it can cite you at all.">
+<meta property="og:url" content="https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html">
+<meta property="og:site_name" content="BAIDLABS">
+<meta property="og:image" content="https://baidnehum18.github.io/baidlabs/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Technical GEO Checklist | BAIDLABS">
+<meta name="twitter:description" content="Crawler access, structured data, rendering, freshness signals and llms.txt — the technical foundation an AI engine needs before it can cite you at all.">
+<meta name="twitter:image" content="https://baidnehum18.github.io/baidlabs/og.jpg">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232438ff'/%3E%3Cpath d='M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://baidnehum18.github.io/baidlabs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Insights",
+          "item": "https://baidnehum18.github.io/baidlabs/insights/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The technical GEO checklist",
+          "item": "https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html#article",
+      "headline": "The technical GEO checklist",
+      "description": "Crawler access, structured data, rendering, freshness signals and llms.txt — the technical foundation an AI engine needs before it can cite you at all.",
+      "url": "https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html",
+      "datePublished": "2026-08-31",
+      "dateModified": "2026-08-31",
+      "inLanguage": "en",
+      "author": {
+        "@id": "https://baidnehum18.github.io/baidlabs/#founder"
+      },
+      "publisher": {
+        "@id": "https://baidnehum18.github.io/baidlabs/#org"
+      },
+      "mainEntityOfPage": "https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html",
+      "about": [
+        "Technical SEO",
+        "Structured Data",
+        "Schema"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://baidnehum18.github.io/baidlabs/#org",
+      "name": "BAIDLABS",
+      "url": "https://baidnehum18.github.io/baidlabs/",
+      "logo": "https://baidnehum18.github.io/baidlabs/logo.png",
+      "email": "baidnehum181@gmail.com",
+      "telephone": "+91-9680196821",
+      "founder": {
+        "@id": "https://baidnehum18.github.io/baidlabs/#founder"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jaipur",
+        "addressRegion": "Rajasthan",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://baidnehum18.github.io/baidlabs/#founder",
+      "name": "Nehum Baid",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@id": "https://baidnehum18.github.io/baidlabs/#org"
+      },
+      "sameAs": [
+        "https://github.com/baidnehum18"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://baidnehum18.github.io/baidlabs/insights/technical-geo-checklist.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does robots.txt work on GitHub Pages project sites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only partially. Crawlers read robots.txt from the domain root, so on username.github.io/project/ a robots.txt inside the project folder isn't authoritative — the one at the domain root governs. It becomes fully effective once you point a custom domain at the site."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will adding schema get me cited?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not on its own. Schema makes you eligible and unambiguous; it doesn't make you authoritative. Think of it as removing a barrier rather than adding a boost — necessary, not sufficient."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need llms.txt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's cheap and harmless, so add it — but don't expect much from it alone. Prioritize crawl access, rendering, entity schema and off-site corroboration first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check if AI crawlers are actually visiting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look in your server or CDN access logs for the user agents listed above. If your host doesn't expose logs, Cloudflare and similar CDNs report AI crawler traffic in their analytics."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="../" aria-label="BAIDLABS home">
+      <span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z" fill="#ffffff"/></svg></span>
+      <span>BAID<span>LABS</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../#services">Services</a>
+      <a href="../#work">Work</a>
+      <a href="../insights/" class="on">Insights</a>
+      <a href="../tools/ai-visibility-checker.html">Free checker</a>
+      <a href="../#about">About</a>
+    </nav>
+    <a href="../#contact" class="btn btn-ink btn-sm">Book a free audit</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../#services">Services</a>
+  <a href="../#work">Work</a>
+  <a href="../insights/">Insights</a>
+  <a href="../tools/ai-visibility-checker.html">Free checker</a>
+  <a href="../#about">About</a>
+  <a href="../#contact" class="btn btn-ink">Book a free audit →</a>
+</div>
+<main>
+<article class="wrap art-head">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="../">BAIDLABS</a> <i>/</i> <a href="./">Insights</a> <i>/</i> <span>Technical checklist</span>
+  </nav>
+  <h1>The technical <em class="accent">GEO checklist</em></h1>
+  <div class="art-meta"><span class="tag">Technical</span><span class="tag">9 min read</span><span class="dot">·</span><span>Updated 2026-08-31</span></div>
+  <div class="answer-box">
+    <span class="lbl">The short answer</span>
+    <p>Technical GEO comes down to four questions: can AI crawlers <strong>reach</strong> your content, can they <strong>parse</strong> it without executing JavaScript, does your <strong>structured data</strong> state unambiguously who you are, and can they tell how <strong>fresh</strong> it is? Get those right and you're eligible to be cited. They don't earn citations on their own — but nothing else works without them.</p>
+  </div>
+</article>
+<div class="wrap art-body">
+
+<h2>1. Crawler access</h2>
+<p>Start here, because it's binary. Check your robots.txt for these user agents and make sure the ones you want are allowed:</p>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>User agent</th><th>Operator</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td><code>GPTBot</code></td><td>OpenAI</td><td>Training and index crawling</td></tr>
+    <tr><td><code>OAI-SearchBot</code></td><td>OpenAI</td><td>ChatGPT search index</td></tr>
+    <tr><td><code>ChatGPT-User</code></td><td>OpenAI</td><td>Live fetch when a user's question needs it</td></tr>
+    <tr><td><code>ClaudeBot</code> / <code>Claude-User</code></td><td>Anthropic</td><td>Index and user-triggered fetch</td></tr>
+    <tr><td><code>PerplexityBot</code></td><td>Perplexity</td><td>Index crawling</td></tr>
+    <tr><td><code>Google-Extended</code></td><td>Google</td><td>Gemini and AI grounding</td></tr>
+    <tr><td><code>meta-externalagent</code></td><td>Meta</td><td>Meta AI</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Two traps. First, blanket AI opt-outs added during the 2023–24 scraping backlash are still live on many sites — check before assuming. Second, <strong>robots.txt is only read from the domain root</strong>. If your site lives on a subpath (a GitHub Pages project site, for instance), your robots.txt there is decorative.</p>
+
+<h3>Verify, don't assume</h3>
+<p>Check server logs for actual visits from these agents. A permissive robots.txt with a firewall or bot-protection rule silently blocking the same crawlers is a common and invisible failure.</p>
+
+<h2>2. Rendering and markup</h2>
+<p>Not every AI crawler executes JavaScript, and those that do may not wait for slow client-side hydration. Content that only exists after a framework boots is content at risk.</p>
+<ul class="chk">
+  <li><span class="tick">✓</span> Serve meaningful content in the initial HTML response — static generation or server-side rendering.</li>
+  <li><span class="tick">✓</span> Test with JavaScript disabled: what remains is roughly your worst-case machine view.</li>
+  <li><span class="tick">✓</span> Use real semantic elements — one <code>&lt;h1&gt;</code>, ordered headings, real lists and tables.</li>
+  <li><span class="tick">✓</span> Put important content in text, not baked into images.</li>
+</ul>
+
+<h2>3. Structured data that states your identity</h2>
+<p>This is where GEO diverges most from classic SEO. You are not adding schema to win a rich snippet; you are removing ambiguity about what entity this site represents. A connected graph beats scattered fragments:</p>
+<ul>
+  <li><strong>Organization</strong> (or LocalBusiness / ProfessionalService) — name, URL, logo, address, contact, area served.</li>
+  <li><strong>Person</strong> — the founder or key people, linked via <code>founder</code> and <code>worksFor</code>.</li>
+  <li><strong>WebSite</strong> and <strong>WebPage</strong> — tying pages to the publisher.</li>
+  <li><strong>Service</strong> — what you actually sell, with a provider reference.</li>
+  <li><strong>FAQPage</strong> — question/answer pairs matching visible content <em>verbatim</em>.</li>
+  <li><strong>BreadcrumbList</strong> and <strong>Article</strong> on content pages.</li>
+</ul>
+<p>Two rules that matter more than completeness. <strong>Use <code>@id</code> to link nodes</strong> so the graph is explicit rather than a pile of unrelated objects. And <strong>never let schema contradict visible content</strong> — mismatched FAQ markup in particular is a known source of manual penalties, and it undermines exactly the trust you're trying to build.</p>
+
+<h3>The sameAs signal</h3>
+<p>Your <code>sameAs</code> array — LinkedIn, GitHub, directory profiles, a Wikipedia entry if you have one — is how you tell an engine which external records refer to you. This is one of the highest-leverage and most-skipped fields.</p>
+
+<h2>4. Freshness signals</h2>
+<p>Recency is weighted heavily. Make it legible:</p>
+<ul class="chk">
+  <li><span class="tick">✓</span> Visible "last updated" dates on content pages.</li>
+  <li><span class="tick">✓</span> Accurate <code>dateModified</code> in Article schema.</li>
+  <li><span class="tick">✓</span> A sitemap with honest <code>lastmod</code> values.</li>
+  <li><span class="tick">✓</span> A real refresh cadence — updating substance, not just bumping dates. Cosmetic date changes are detectable and corrosive to trust.</li>
+</ul>
+
+<h2>5. llms.txt — useful, oversold</h2>
+<p>An <code>llms.txt</code> file at your domain root offers a plain-markdown summary of your site for language models. It's cheap to add, it's a clean way to state your canonical description, and we ship it as standard.</p>
+<p>But be clear-eyed: adoption by major engines is not established, and it is not a ranking mechanism. Any agency presenting llms.txt as the core of a GEO offering is selling the easiest deliverable rather than the effective one. Crawlability, entity clarity, extractable content and off-site authority do the actual work.</p>
+
+<h2>The 30-minute audit</h2>
+<ol>
+  <li>Fetch <code>yourdomain.com/robots.txt</code> — are AI agents allowed, and is it at the true root?</li>
+  <li>View source with JS disabled — is the content there?</li>
+  <li>Run the page through a schema validator — does a connected entity graph appear?</li>
+  <li>Check your canonical, og:image and og:url actually match the live URL.</li>
+  <li>Confirm sitemap.xml resolves and is submitted in Search Console and Bing Webmaster Tools.</li>
+  <li>Search your own brand name and check what the top external sources say about you.</li>
+</ol>
+<p>If you'd rather have this scored for you, our <a href="../tools/ai-visibility-checker.html">free AI visibility checker</a> walks through the same ground in a few minutes.</p>
+
+<h2 id="faq">Frequently asked</h2>
+<details class="faq">
+  <summary>Does robots.txt work on GitHub Pages project sites? <span class="plus">+</span></summary>
+  <div class="faq-body">Only partially. Crawlers read robots.txt from the domain root, so on <code>username.github.io/project/</code> a robots.txt inside the project folder isn't authoritative — the one at the domain root governs. It becomes fully effective once you point a custom domain at the site.</div>
+</details>
+<details class="faq">
+  <summary>Will adding schema get me cited? <span class="plus">+</span></summary>
+  <div class="faq-body">Not on its own. Schema makes you eligible and unambiguous; it doesn't make you authoritative. Think of it as removing a barrier rather than adding a boost — necessary, not sufficient.</div>
+</details>
+<details class="faq">
+  <summary>Do I need llms.txt? <span class="plus">+</span></summary>
+  <div class="faq-body">It's cheap and harmless, so add it — but don't expect much from it alone. Prioritize crawl access, rendering, entity schema and off-site corroboration first.</div>
+</details>
+<details class="faq">
+  <summary>How do I check if AI crawlers are actually visiting? <span class="plus">+</span></summary>
+  <div class="faq-body">Look in your server or CDN access logs for the user agents listed above. If your host doesn't expose logs, Cloudflare and similar CDNs report AI crawler traffic in their analytics.</div>
+</details>
+<h2>Keep reading</h2>
+<div class="rel">
+    <a href="geo-vs-seo.html"><span class="k">Comparison</span><span class="t">GEO vs SEO: what actually changes</span></a>
+    <a href="how-to-measure-ai-visibility.html"><span class="k">Measurement</span><span class="t">How to measure AI visibility</span></a>
+    <a href="google-ai-overviews.html"><span class="k">Google</span><span class="t">How to appear in Google AI Overviews</span></a>
+</div>
+<div class="cta-band reveal">
+  <div>
+    <h3>Want this done for your brand?</h3>
+    <p>Book a free GEO audit: where you appear across 6+ AI engines today, the prompts competitors own, and a prioritized 90-day plan you keep either way.</p>
+  </div>
+  <a href="../#contact" class="btn btn-ink">Book a free audit <span class="arr">→</span></a>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="../" aria-label="BAIDLABS home">
+          <span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z" fill="#ffffff"/></svg></span>
+          <span>BAID<span>LABS</span></span>
+        </a>
+        <p>The GEO + AEO studio. We make brands the answer AI gives &mdash; and build the websites that carry them. Based in Jaipur, working worldwide.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Insights</h4>
+          <a href="../insights/what-is-generative-engine-optimization.html">What is GEO?</a>
+          <a href="../insights/geo-vs-seo.html">GEO vs SEO</a>
+          <a href="../insights/how-chatgpt-chooses-what-to-recommend.html">How ChatGPT chooses</a>
+          <a href="../insights/">All guides</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="../#services">Services</a>
+          <a href="../work/ms-interio.html">Case study</a>
+          <a href="../#about">About</a>
+          <a href="../tools/ai-visibility-checker.html">Free AI visibility checker</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="mailto:baidnehum181@gmail.com">baidnehum181@gmail.com</a>
+          <a href="tel:+919680196821">+91 96801 96821</a>
+          <span>Jaipur, Rajasthan, India</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; <span id="year">2026</span> BAIDLABS &middot; Jaipur, India. All rights reserved.</span>
+      <span>Built to be cited.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById("nav");
+  function s(){nav.classList.toggle("scrolled",window.scrollY>10)}
+  window.addEventListener("scroll",s,{passive:true});s();
+  var b=document.getElementById("burger"),m=document.getElementById("mobileMenu");
+  b.addEventListener("click",function(){
+    var o=m.classList.toggle("open");b.classList.toggle("open",o);
+    b.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":"";
+  });
+  m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
+    m.classList.remove("open");b.classList.remove("open");document.body.style.overflow="";
+  })});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},
+      {threshold:.1,rootMargin:"0px 0px -30px 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  } else {document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")})}
+  document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

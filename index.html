@@ -3,14 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0RFKMBR3DQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0RFKMBR3DQ');
-</script>
 <title>BAIDLABS — GEO & AEO Agency | Get Cited by AI Engines</title>
 <meta name="description" content="BAIDLABS is a GEO + AEO agency in Jaipur, India. We get brands cited and recommended by ChatGPT, Google AI Overviews, Perplexity, and other AI engines.">
 <meta name="keywords" content="generative engine optimization, answer engine optimization, GEO agency, AEO agency, AI search optimization, AI visibility, LLM SEO, website design">
@@ -89,7 +81,7 @@
         "addressRegion": "Rajasthan",
         "addressCountry": "IN"
       },
-      "sameAs": ["https://www.linkedin.com/in/nehum-baid-b8159b326/", "https://github.com/baidnehum18"],
+      "sameAs": ["https://github.com/baidnehum18"],
       "knowsAbout": ["Generative Engine Optimization", "Answer Engine Optimization", "Web Design and Development", "Structured Data"]
     },
     {
@@ -536,8 +528,9 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
       <a href="#services">Services</a>
       <a href="#process">Process</a>
       <a href="#work">Work</a>
+      <a href="insights/">Insights</a>
+      <a href="tools/ai-visibility-checker.html">Free checker</a>
       <a href="#about">About</a>
-      <a href="#results">Results</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a href="#contact" class="btn btn-ink btn-sm">Book a free audit</a>
@@ -550,9 +543,10 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
   <a href="#services">Services <small>02</small></a>
   <a href="#process">Process <small>03</small></a>
   <a href="#work">Work <small>04</small></a>
-  <a href="#about">About <small>05</small></a>
-  <a href="#results">Results <small>06</small></a>
-  <a href="#faq">FAQ <small>07</small></a>
+  <a href="insights/">Insights <small>05</small></a>
+  <a href="tools/ai-visibility-checker.html">Free checker <small>06</small></a>
+  <a href="#about">About <small>07</small></a>
+  <a href="#faq">FAQ <small>08</small></a>
   <a href="#contact" class="btn btn-ink">Book a free audit →</a>
 </div>
 
@@ -699,7 +693,7 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
         <p>Monthly iteration loops: refresh what's decaying, expand into new question spaces, and report exactly what moved and why. Compounding, not campaigns.</p>
         <span class="go">→</span>
       </a>
-      <a class="svc-row" href="#work">
+      <a class="svc-row" href="work/ms-interio.html">
         <span class="n">/ 07</span>
         <h3>Websites, Built &amp; Rebuilt</h3>
         <p>We design new websites and rebuild existing ones — fast, modern, and GEO/AEO-ready from the first line of code. Structure, schema, and speed baked in, not bolted on.</p>
@@ -767,7 +761,10 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
           <div><b>2019</b><span>studio est.</span></div>
         </div>
         <p class="work-note">Now tracking its AI-visibility baseline — citations, prompt wins, share of voice across engines. Results publish here as they mature.</p>
-        <p class="work-cta" style="margin-top:24px"><a class="tlink" href="https://msinterio.in" target="_blank" rel="noopener">Visit msinterio.in ↗</a></p>
+        <p class="work-cta" style="margin-top:24px;display:flex;gap:26px;flex-wrap:wrap">
+          <a class="tlink" href="work/ms-interio.html">Read the case study →</a>
+          <a class="tlink" href="https://msinterio.in" target="_blank" rel="noopener">Visit msinterio.in ↗</a>
+        </p>
       </div>
       <div class="work-shot" aria-hidden="true">
         <a href="https://msinterio.in" target="_blank" rel="noopener" tabindex="-1">
@@ -815,7 +812,6 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
         <span class="f-role">Founder, BAIDLABS</span>
         <p class="f-loc"><i aria-hidden="true"></i> Jaipur, Rajasthan, India — working worldwide</p>
         <div class="f-links">
-          <a href="https://www.linkedin.com/in/nehum-baid-b8159b326/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
           <a href="https://github.com/baidnehum18" target="_blank" rel="noopener">GitHub <span>↗</span></a>
           <a href="mailto:baidnehum181@gmail.com">baidnehum181@gmail.com <span>→</span></a>
           <a href="tel:+919680196821">+91 96801 96821 <span>→</span></a>
@@ -909,9 +905,8 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
           <li><span class="tick">✓</span> A prioritized 90-day plan, yours to keep</li>
         </ul>
       </div>
-      <!-- Submissions POST to a Google Form endpoint; responses land in the
-           "BAIDLABS Leads (Website Form)" Google Sheet and trigger an email alert.
-           Endpoint + field IDs are configured at the bottom of this file. -->
+      <!-- To wire this form to a backend, replace the mailto logic in the script below
+           with your form endpoint (Formspree, Tally, Basin…) or embed a Cal.com/Calendly widget here. -->
       <form class="form" id="auditForm" novalidate>
         <div class="form-row">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Your name" required></div>
@@ -919,9 +914,8 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
         </div>
         <div class="field"><label for="f-site">Company website</label><input id="f-site" name="website" type="url" placeholder="https://yourcompany.com"></div>
         <div class="field"><label for="f-msg">What do you sell — and who's asking about it?</label><textarea id="f-msg" name="message" placeholder="e.g. B2B payroll software. We want to show up when founders ask AI for payroll recommendations."></textarea></div>
-        <div class="field" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden"><label for="f-company">Leave this empty</label><input id="f-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn-ink" type="submit">Request my free audit <span class="arr">→</span></button>
-        <p class="form-note">We read every request and reply within one business day — or write to <a href="mailto:baidnehum181@gmail.com">baidnehum181@gmail.com</a> · call <a href="tel:+919680196821">+91 96801 96821</a></p>
+        <p class="form-note">This opens your email app, pre-filled — or write to <a href="mailto:baidnehum181@gmail.com">baidnehum181@gmail.com</a> · call <a href="tel:+919680196821">+91 96801 96821</a></p>
       </form>
     </div>
   </div>
@@ -944,13 +938,18 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
       <div class="foot-cols">
         <div class="foot-col">
           <h4>Explore</h4>
-          <a href="#shift">Why GEO</a>
           <a href="#services">Services</a>
-          <a href="#process">Process</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
-          <a href="#results">Results</a>
           <a href="#faq">FAQ</a>
+        </div>
+        <div class="foot-col">
+          <h4>Insights</h4>
+          <a href="insights/what-is-generative-engine-optimization.html">What is GEO?</a>
+          <a href="insights/geo-vs-seo.html">GEO vs SEO</a>
+          <a href="insights/how-much-does-geo-cost-in-india.html">What GEO costs</a>
+          <a href="insights/">All guides</a>
+          <a href="tools/ai-visibility-checker.html">Free AI visibility checker</a>
         </div>
         <div class="foot-col">
           <h4>Engines</h4>
@@ -1118,77 +1117,18 @@ if ("IntersectionObserver" in window && !reduced){
   });
 }
 
-/* ---------- contact form -> Google Form backend (Sheet + email alert) ---------- */
-var FORM_ENDPOINT = "https://docs.google.com/forms/d/e/1FAIpQLSdrfgA-tAQz3Ky0vG2TyMsfpuptgYubzUwrFLx96MWB_ZeRMA/formResponse";
-var FORM_FIELDS = {
-  name:    "entry.403850606",
-  email:   "entry.717270420",
-  website: "entry.1626007003",
-  message: "entry.1883983437"
-};
-
+/* ---------- contact form (mailto fallback — swap for your form endpoint) ---------- */
 document.getElementById("auditForm").addEventListener("submit", function(ev){
   ev.preventDefault();
   var f = ev.target;
   if (!f.reportValidity()) return;
-
-  var els  = f.elements;
-  var name = els.name.value.trim(),
-      mail = els.email.value.trim(),
-      site = els.website.value.trim(),
-      msg  = els.message.value.trim();
-
-  /* honeypot: bots fill hidden fields, humans do not */
-  if (els.company && els.company.value) { showThanks(); return; }
-
-  var btn = f.querySelector('button[type="submit"]');
-  var note = f.querySelector(".form-note");
-  var label = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = "Sending\u2026";
-
-  var body = new URLSearchParams();
-  body.append(FORM_FIELDS.name,    name);
-  body.append(FORM_FIELDS.email,   mail);
-  body.append(FORM_FIELDS.website, site);
-  body.append(FORM_FIELDS.message, msg);
-
-  fetch(FORM_ENDPOINT, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {"Content-Type": "application/x-www-form-urlencoded"},
-    body: body.toString()
-  }).then(function(){
-    if (typeof gtag === "function") {
-      gtag("event", "generate_lead", {
-        form_name: "audit_request",
-        company_website: site || "(none)"
-      });
-    }
-    showThanks();
-  }).catch(function(){
-    btn.disabled = false;
-    btn.innerHTML = label;
-    if (note) {
-      note.innerHTML = 'Something went wrong sending that \u2014 please email us directly at ' +
-        '<a href="mailto:baidnehum181@gmail.com">baidnehum181@gmail.com</a>.';
-      note.style.color = "#b3261e";
-    }
-  });
-
-  function showThanks(){
-    f.innerHTML = '<div class="form-success" style="padding:8px 0">' +
-      '<p class="eyebrow"><b>\u2713</b> Request received</p>' +
-      '<h3 style="margin:.4em 0 .3em">Thanks, ' + escapeHTML(name.split(" ")[0] || "there") + '.</h3>' +
-      '<p class="lead" style="margin:0">Your free GEO audit request is in. We\'ll reply to ' +
-      '<strong>' + escapeHTML(mail) + '</strong> within one business day.</p></div>';
-  }
-
-  function escapeHTML(str){
-    return String(str).replace(/[&<>"\']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[c];
-    });
-  }
+  var name = f.name.value.trim(), email = f.email.value.trim(),
+      site = f.website.value.trim(), msg = f.message.value.trim();
+  var body = "Name: " + name + "\nEmail: " + email + "\nWebsite: " + (site || "—") +
+             "\n\nAbout us:\n" + (msg || "—") + "\n\n— sent from the BAIDLABS website";
+  location.href = "mailto:baidnehum181@gmail.com?subject=" +
+    encodeURIComponent("Free GEO audit request — " + name) +
+    "&body=" + encodeURIComponent(body);
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();

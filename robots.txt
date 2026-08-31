@@ -1,6 +1,4 @@
-# BAIDLABS — https://baidnehum18.github.io/baidlabs/
-# NOTE: crawlers only honour robots.txt at the domain ROOT.
-# The authoritative copy lives in the baidnehum18.github.io repo.
+# BAIDLABS — baidlabs.com
 # All crawlers welcome. This site is built to be cited.
 
 User-agent: *
