@@ -482,7 +482,27 @@ var EN = encodeURIComponent;
    scans stop failing.                                                        */
 var OWN_RELAY = "";   /* e.g. "https://baidlabs-relay.yourname.workers.dev" */
 
+/* r.jina.ai is a reader service rather than an open CORS proxy, so it is not
+   on the blocklists that many ISPs apply to proxy domains — measured working
+   where allorigins/codetabs/corsproxy are DNS-blackholed. Asking for
+   x-respond-with:html returns the real markup (schema and all); plain-text
+   files come back wrapped in <pre>, which unwrapJina strips. */
+var JINA_HEADERS = { "x-respond-with": "html" };
+function unwrapJina(txt){
+  if(!txt || !/<pre[\s>]/i.test(txt)) return txt;
+  try {
+    var d = new DOMParser().parseFromString(txt, "text/html");
+    var pre = d.querySelector("pre");
+    if(pre && pre.textContent && pre.textContent.length > 20){
+      var bodyLen = ((d.body && d.body.textContent) || "").length || 1;
+      if(pre.textContent.length > bodyLen * 0.6) return pre.textContent;
+    }
+  } catch(e){}
+  return txt;
+}
+
 var RELAYS = [
+  {n:"jina", u:function(x){ return "https://r.jina.ai/" + x; }, headers: JINA_HEADERS, post: unwrapJina},
   {n:"allorigins",  u:function(x){ return "https://api.allorigins.win/raw?url=" + EN(x); }},
   {n:"codetabs",    u:function(x){ return "https://api.codetabs.com/v1/proxy?quest=" + EN(x); }},
   {n:"allorigins2", u:function(x){ return "https://api.allorigins.win/get?url=" + EN(x); },
@@ -537,10 +557,11 @@ function relayList(){
 function raceFetch(target, ms, needHtml){
   ms = ms || 22000;
   var tries = relayList().map(function(r){
-    return withTimeout(fetch(r.u(target), {redirect:"follow"}), ms)
+    return withTimeout(fetch(r.u(target), {redirect:"follow", headers: r.headers || {}}), ms)
       .then(function(res){ if(!res.ok) throw new Error("HTTP " + res.status); return res.text(); })
       .then(function(txt){
         if(r.pick) txt = r.pick(txt);
+        if(r.post) txt = r.post(txt);
         if(!txt || txt.length < 60) throw new Error("empty reply");
         if(needHtml && txt.indexOf("<") === -1) throw new Error("not a web page");
         DIAG.push({relay:r.n, target:target, ok:true});
@@ -563,6 +584,7 @@ function probe(url, ms){
   ms = ms || 11000;
   var order = [
     {n:"own-relay", u: OWN_RELAY ? OWN_RELAY.replace(/\/+$/,"") + "/?url=" + EN(url) : "", header:true},
+    {n:"jina", u:"https://r.jina.ai/" + url, headers: JINA_HEADERS, post: unwrapJina},
     {n:"allorigins-json", u:"https://api.allorigins.win/get?url=" + EN(url), json:true},
     {n:"allorigins",      u:"https://api.allorigins.win/raw?url=" + EN(url)},
     {n:"codetabs",        u:"https://api.codetabs.com/v1/proxy?quest=" + EN(url)}
@@ -572,7 +594,7 @@ function probe(url, ms){
     if(i >= order.length) return Promise.resolve({state:"unknown"});
     var r = order[i++];
     if(!r.u) return step();                       /* own relay not configured */
-    return withTimeout(fetch(r.u, {redirect:"follow"}), ms).then(function(res){
+    return withTimeout(fetch(r.u, {redirect:"follow", headers: r.headers || {}}), ms).then(function(res){
       if(r.header){                                /* our Worker reports the real status */
         var up = parseInt(res.headers.get("X-Upstream-Status") || "0", 10);
         if(up >= 400){ DIAG.push({relay:r.n, target:url, err:"upstream " + up}); return {state:"absent"}; }
@@ -602,6 +624,7 @@ function probe(url, ms){
       }
       if(!res.ok) throw new Error("HTTP " + res.status);
       return res.text().then(function(t){
+        if(r.post) t = r.post(t);
         if(!t || t.length < 30) throw new Error("empty");
         DIAG.push({relay:r.n, target:url, ok:true});
         return {state:"found", text:t};
