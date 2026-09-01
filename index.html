@@ -290,6 +290,30 @@ section{padding:110px 0}
 .ac-foot .live i{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
+/* hero checker band */
+.hero-check{border:1px solid var(--line);border-radius:20px;background:
+  radial-gradient(800px 300px at 8% 0%,rgba(36,56,255,.07),transparent 62%),var(--paper-2);
+  padding:32px 36px;margin-top:38px;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;
+  align-items:center;box-shadow:0 18px 50px rgba(16,16,20,.06)}
+.hc-tag{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);background:var(--blue-soft);border-radius:999px;
+  padding:5px 12px;margin-bottom:14px}
+.hc-copy h2{font-family:var(--serif);font-size:1.75rem;font-weight:400;line-height:1.15;margin-bottom:9px}
+.hc-copy p{color:var(--muted);font-size:.94rem;max-width:420px}
+.hc-form{display:grid;gap:12px}
+.hc-row{display:flex;align-items:center;border:1px solid var(--line);border-radius:12px;
+  background:var(--paper);padding:0 4px 0 16px;transition:border-color .2s,box-shadow .2s}
+.hc-row:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,56,255,.12)}
+.hc-pre{font-family:var(--mono);font-size:.85rem;color:var(--faint);white-space:nowrap}
+.hc-row input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:1rem;
+  padding:14px 10px;color:var(--ink)}
+.hc-row input:focus{outline:none}
+.hc-row input::placeholder{color:var(--faint)}
+.hc-form .btn{justify-content:center;width:100%}
+@media (max-width:900px){
+  .hero-check{grid-template-columns:1fr;gap:22px;padding:26px 22px}
+}
+
 /* marquee */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;margin-top:96px;position:relative}
 .marquee-track{display:flex;width:max-content;animation:scroll 40s linear infinite}
@@ -571,6 +595,24 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
       <a href="#shift" class="tlink">See why it matters</a>
     </div>
     <p class="hero-note reveal in d3">900M+ people ask ChatGPT every week — your buyers are in there.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-check reveal in d3">
+      <div class="hc-copy">
+        <span class="hc-tag">Free · 30 seconds · no signup</span>
+        <h2>How visible is your brand to AI right now?</h2>
+        <p>Enter your website. We'll read it the way ChatGPT and Google's AI do, and score what's keeping you out of the answers.</p>
+      </div>
+      <form class="hc-form" id="heroCheck">
+        <div class="hc-row">
+          <span class="hc-pre" aria-hidden="true">https://</span>
+          <input id="heroUrl" type="text" inputmode="url" spellcheck="false"
+                 placeholder="yourcompany.com" aria-label="Your website address" required>
+        </div>
+        <button class="btn btn-ink" type="submit">Get my AI visibility score <span class="arr">&rarr;</span></button>
+      </form>
+    </div>
   </div>
 
   <div class="wrap demo-band">
@@ -1199,6 +1241,17 @@ document.getElementById("auditForm").addEventListener("submit", function(ev){
       return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[c];
     });
   }
+});
+
+/* hero checker -> deep link into the tool, which auto-runs the scan */
+var heroCheck = document.getElementById("heroCheck");
+if (heroCheck) heroCheck.addEventListener("submit", function(ev){
+  ev.preventDefault();
+  var v = document.getElementById("heroUrl").value.trim().replace(/^https?:\/\//i, "").replace(/\/+$/, "");
+  if (!/^[a-z0-9.-]+\.[a-z]{2,}/i.test(v)) { document.getElementById("heroUrl").focus(); return; }
+  if (typeof gtag === "function")
+    gtag("event", "hero_check_start", { checked_domain: v });
+  location.href = "tools/ai-visibility-checker.html?url=" + encodeURIComponent(v);
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
