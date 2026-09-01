@@ -474,6 +474,14 @@ var CATS = {
 var AI_AGENTS = ["gptbot","oai-searchbot","chatgpt-user","claudebot","claude-user","anthropic-ai","perplexitybot","google-extended","meta-externalagent"];
 var SOCIAL = /(facebook|twitter|x\.com|instagram|linkedin|youtube|pinterest|tiktok|wa\.me|whatsapp|t\.me|threads)\./i;
 var EN = encodeURIComponent;
+/* ── Your own relay ──────────────────────────────────────────────────────────
+   The public relays below are free services: rate-limited, often busy, and
+   some hosts block them. That is the usual cause of "we couldn't reach ...".
+   Deploy the 30-line Cloudflare Worker in relay-worker.js (free, 5 minutes —
+   see RELAY-WORKER.md) and paste its URL here. It then gets tried first and
+   scans stop failing.                                                        */
+var OWN_RELAY = "";   /* e.g. "https://baidlabs-relay.yourname.workers.dev" */
+
 var RELAYS = [
   {n:"allorigins",  u:function(x){ return "https://api.allorigins.win/raw?url=" + EN(x); }},
   {n:"codetabs",    u:function(x){ return "https://api.codetabs.com/v1/proxy?quest=" + EN(x); }},
@@ -522,9 +530,13 @@ function anyOf(ps){
 }
 /* Fire every relay at once and take the first good answer. Much more robust
    than trying them one at a time, and far quicker when one is slow. */
+function relayList(){
+  if(!OWN_RELAY) return RELAYS;
+  return [{n:"own-relay", u:function(x){ return OWN_RELAY.replace(/\/+$/,"") + "/?url=" + EN(x); }}].concat(RELAYS);
+}
 function raceFetch(target, ms, needHtml){
-  ms = ms || 18000;
-  var tries = RELAYS.map(function(r){
+  ms = ms || 22000;
+  var tries = relayList().map(function(r){
     return withTimeout(fetch(r.u(target), {redirect:"follow"}), ms)
       .then(function(res){ if(!res.ok) throw new Error("HTTP " + res.status); return res.text(); })
       .then(function(txt){
@@ -550,6 +562,7 @@ function raceFetch(target, ms, needHtml){
 function probe(url, ms){
   ms = ms || 11000;
   var order = [
+    {n:"own-relay", u: OWN_RELAY ? OWN_RELAY.replace(/\/+$/,"") + "/?url=" + EN(url) : "", header:true},
     {n:"allorigins-json", u:"https://api.allorigins.win/get?url=" + EN(url), json:true},
     {n:"allorigins",      u:"https://api.allorigins.win/raw?url=" + EN(url)},
     {n:"codetabs",        u:"https://api.codetabs.com/v1/proxy?quest=" + EN(url)}
@@ -558,7 +571,18 @@ function probe(url, ms){
   function step(){
     if(i >= order.length) return Promise.resolve({state:"unknown"});
     var r = order[i++];
+    if(!r.u) return step();                       /* own relay not configured */
     return withTimeout(fetch(r.u, {redirect:"follow"}), ms).then(function(res){
+      if(r.header){                                /* our Worker reports the real status */
+        var up = parseInt(res.headers.get("X-Upstream-Status") || "0", 10);
+        if(up >= 400){ DIAG.push({relay:r.n, target:url, err:"upstream " + up}); return {state:"absent"}; }
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        return res.text().then(function(t){
+          if(!t || t.length < 30) throw new Error("empty");
+          DIAG.push({relay:r.n, target:url, ok:true});
+          return {state:"found", text:t};
+        });
+      }
       if(r.json){
         if(!res.ok) throw new Error("HTTP " + res.status);
         return res.text().then(function(t){
@@ -1078,11 +1102,17 @@ form.addEventListener("submit", function(ev){
              sitemapFresh:null, manual:false,
              robotsState:"unknown", sitemapState:"unknown", llmsState:"unknown"};
 
-  function tryHome(i){
-    if(i >= variants.length) return Promise.reject(new Error("unreachable"));
-    return raceFetch(variants[i], 20000, true).then(function(html){
+  function tryHome(i, round){
+    round = round || 1;
+    if(i >= variants.length){
+      /* the relays are flaky rather than dead - give them one more go */
+      if(round < 2) return new Promise(function(r){ setTimeout(r, 1200); })
+                             .then(function(){ return tryHome(0, 2); });
+      return Promise.reject(new Error("unreachable"));
+    }
+    return raceFetch(variants[i], 22000, true).then(function(html){
       return {html:html, url:new URL(variants[i])};
-    }).catch(function(){ return tryHome(i+1); });
+    }).catch(function(){ return tryHome(i+1, round); });
   }
 
   tryHome(0).then(function(got){
@@ -1128,7 +1158,7 @@ form.addEventListener("submit", function(ev){
     if(String(e.message) === "challenge")
       showErr("<b>Your site is behind a bot-protection screen.</b> We got a security challenge instead of your page. Worth knowing: if it's blocking this check, it may be blocking AI crawlers too — which is itself worth investigating.", true);
     else
-      showErr("<b>We couldn't reach " + esc(u.hostname) + " through any of our relays.</b> Your site is probably fine — these are free public services and they get busy, or your host may block them. Try again in a minute, or paste your page code below for the same analysis.", true);
+      showErr("<b>We couldn't reach " + esc(u.hostname) + ".</b> This is almost always our end, not yours: the free relay services this tool depends on are rate-limited and often busy. Nothing is wrong with your site. <b>Paste your page code below</b> for the exact same analysis, or try again in a minute.", true);
   });
 });
 
