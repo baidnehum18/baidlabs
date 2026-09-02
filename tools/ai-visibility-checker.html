@@ -114,7 +114,7 @@
           "name": "What does it actually check?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It fetches your homepage, your robots.txt, your sitemap and your llms.txt, then runs around 25 checks across five areas: whether AI crawlers are allowed in, whether your business identity is machine-readable, whether the page structure can be parsed, whether your content is written in a quotable way, and whether it looks current. Every result you see reflects something genuinely found on your site — not a guess."
+            "text": "It fetches your homepage, your robots.txt, your sitemap and your llms.txt, then runs around 25 checks across five areas: whether AI crawlers are allowed in, whether your business identity is machine-readable, whether the page structure can be parsed, whether your content is written in a quotable way, and whether it looks current. Every result you see reflects something genuinely found on your site — not a guess. One detail worth stating plainly: a browser cannot read another website's files directly, so those requests travel through a third-party relay service. We only ever request pages that are already public, and we never send anything about you to it."
           }
         },
         {
@@ -190,7 +190,8 @@
 .r-head{display:flex;gap:40px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:20px;background:var(--paper-2);padding:38px 40px;box-shadow:0 20px 60px rgba(16,16,20,.06);margin-top:34px}
 .r-score{position:relative;flex:0 0 150px;width:150px;height:150px}
 .dial{width:150px;height:150px}
-#dialArc{transition:stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1)}
+#dialArc{transition:stroke-dashoffset .75s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion: reduce){#dialArc{transition:none}}
 .r-num{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font-family:var(--serif);font-size:2.9rem;line-height:1}
 .r-num small{font-size:.95rem;color:var(--faint)}
 .r-verdict{flex:1;min-width:280px}
@@ -444,7 +445,7 @@
 <h2 style="font-family:var(--serif);font-size:1.9rem;margin-bottom:24px">About this checker</h2>
 <details class="faq" open>
   <summary>What does it actually check? <span class="plus">+</span></summary>
-  <div class="faq-body">It fetches your homepage, your <code>robots.txt</code>, your sitemap and your <code>llms.txt</code>, then runs around 25 checks across five areas: whether AI crawlers are allowed in, whether your business identity is machine-readable, whether the page structure can be parsed, whether your content is written in a quotable way, and whether it looks current. Every result you see reflects something genuinely found on your site — not a guess.</div>
+  <div class="faq-body">It fetches your homepage, your <code>robots.txt</code>, your sitemap and your <code>llms.txt</code>, then runs around 25 checks across five areas: whether AI crawlers are allowed in, whether your business identity is machine-readable, whether the page structure can be parsed, whether your content is written in a quotable way, and whether it looks current. Every result you see reflects something genuinely found on your site — not a guess. One detail worth stating plainly: a browser cannot read another website's files directly, so those requests travel through a third-party relay service. We only ever request pages that are already public, and we never send anything about you to it.</div>
 </details>
 <details class="faq">
   <summary>Does it tell me if ChatGPT recommends me? <span class="plus">+</span></summary>
@@ -1066,8 +1067,30 @@ function scoreAndRender(res, urlStr, manual){
     });
   }
 
-  var n = 0, step = Math.max(1, Math.round(score/38)), el = $("scoreNum");
-  (function tick(){ n = Math.min(score, n+step); el.textContent = n; if(n < score) setTimeout(tick, 22); })();
+  /* The count-up used to be step-based on setTimeout, which browsers clamp to ~1s
+     in a background tab - it took over ten seconds to reach the real number and
+     anyone screenshotting the result captured a wrong score. This is time-based,
+     capped at 700ms, and snaps straight to the final value if the tab is not
+     visible or the viewer prefers reduced motion. The number on screen is never
+     wrong for more than a moment. */
+  var el = $("scoreNum");
+  el.setAttribute("aria-label", score + " out of 100");
+  (function(){
+    var DUR = 700, t0 = null, raf = window.requestAnimationFrame;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function snap(){ el.textContent = score; }
+    if(!raf || reduce || document.hidden){ snap(); return; }
+    function onHide(){ if(document.hidden){ snap(); t0 = -1; } }
+    document.addEventListener("visibilitychange", onHide);
+    raf(function frame(ts){
+      if(t0 === -1) return;
+      if(t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / DUR);
+      el.textContent = Math.round(score * (1 - Math.pow(1 - p, 3)));
+      if(p < 1) raf(frame);
+      else { snap(); document.removeEventListener("visibilitychange", onHide); }
+    });
+  })();
   setTimeout(function(){ $("dialArc").style.strokeDashoffset = 327 - (327*score/100); }, 120);
 
   var bars = $("bars"); bars.innerHTML = "";
