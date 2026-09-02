@@ -218,6 +218,7 @@
 .fnd.crit .ic{background:#fdeaea;color:#c0272d}
 .fnd.warn .ic{background:#fdf3e2;color:#a06a12}
 .fnd.ok .ic{background:var(--blue-soft);color:var(--blue)}
+.fnd.info .ic{background:#eef0f3;color:#5b6472}
 .fnd .hd{flex:1;min-width:0;display:block}
 .fnd .t{display:block;font-weight:600;font-size:1rem;margin-bottom:3px}
 .fnd .f{display:block;color:var(--muted);font-size:.89rem}
@@ -392,6 +393,11 @@
 
   <h3 class="r-sub" id="issuesHead">What's holding you back</h3>
   <div class="findings" id="issues"></div>
+
+  <details class="wins" id="notesWrap" hidden>
+    <summary><span id="notesCount">0</span> worth knowing (not counted against you) <span class="plus">+</span></summary>
+    <div class="findings" id="notes"></div>
+  </details>
 
   <details class="wins">
     <summary><span id="winsCount">0</span> things already working <span class="plus">+</span></summary>
@@ -636,6 +642,28 @@ function probe(url, ms){
   }
   return step();
 }
+function looksSitemap(t){
+  if(looksHtml(t)) return false;
+  if(/<urlset|<sitemapindex/i.test(t)) return true;
+  if((t.match(/<loc[\s>]/gi)||[]).length >= 3) return true;
+  /* reader-style relays strip XML tags and hand back a bare list of URLs */
+  return (t.match(/https?:\/\/[^\s<>"')]+/gi)||[]).length >= 5;
+}
+function findAboutUrl(doc, origin){
+  var found = null;
+  [].slice.call(doc.querySelectorAll("a[href]")).some(function(a){
+    var h = a.getAttribute("href") || "";
+    var t = (a.textContent || "").trim().toLowerCase();
+    if(/^(mailto:|tel:|#|javascript:)/i.test(h)) return false;
+    if(/about|our-team|\bteam\b|who-we-are|our-story|founder/i.test(h) ||
+       /^(about|about us|our team|the team|team|who we are|our story|meet the team)$/.test(t)){
+      try { found = new URL(h, origin).href; } catch(e){}
+      return !!found;
+    }
+    return false;
+  });
+  return found;
+}
 function looksHtml(t){ return /^\s*(<!doctype|<html|<\?xml-stylesheet)/i.test(t) || /<html[\s>]/i.test(t.slice(0,400)); }
 
 function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){
@@ -729,9 +757,13 @@ function analyze(ctx){
   } else if(ctx.sitemapState === "found"){
     add("find","ok",4,4,"You have a sitemap","Found a sitemap listing your pages.",
       "A sitemap helps crawlers discover every page rather than only the ones they stumble across.","");
+  } else if(ctx.sitemapState === "declared"){
+    add("find","ok",4,4,"You have a sitemap",
+      "Your robots.txt points to " + esc(ctx.sitemap || "a sitemap") + ".",
+      "A sitemap helps crawlers discover every page rather than only the ones they stumble across. We confirmed it from your robots.txt; our relay couldn't open the file itself, which is a limitation on our side, not a fault on yours.","");
   } else {
     add("find","warn",0,4,"No sitemap found",
-      "We couldn't find sitemap.xml at your domain root.",
+      "No sitemap at your domain root, and none declared in robots.txt.",
       "Without a sitemap, search and AI crawlers have to find your pages by following links. Deeper pages often get missed entirely.",
       "Generate a sitemap.xml, put it at your domain root, and submit it in Google Search Console and Bing Webmaster Tools.");
   }
@@ -807,12 +839,18 @@ function analyze(ctx){
     "Nothing connects your website to any other record of your business. For an AI engine, a business that exists in exactly one place on the internet is hard to verify — and verification is what it needs before recommending you.",
     "Create and link a Google Business Profile and a LinkedIn page at minimum, then reference them in your structured data.");
 
-  var hasPerson = hasType(/^Person$/i) || /founder|owner|ceo|director|proprietor/i.test(text.slice(0,6000));
+  var personRe = /founder|owner|ceo|director|proprietor|principal architect/i;
+  var hasPerson = hasType(/^Person$/i) || personRe.test(text.slice(0,6000)) ||
+                  (ctx.aboutText ? personRe.test(String(ctx.aboutText).slice(0,20000)) : false);
   if(hasPerson) add("id","ok",4,4,"A real person is attached to the business",
-    "Found a named person or founder reference.",
+    ctx.aboutText && !personRe.test(text.slice(0,6000))
+      ? "Found a named person or founder reference on your About page."
+      : "Found a named person or founder reference.",
     "Businesses with a visible human behind them read as more credible to both people and engines.","");
   else add("id","warn",0,4,"No named person behind the business",
-    "We couldn't find a founder, owner or team member named on the page.",
+    ctx.aboutTried
+      ? "We couldn't find a founder, owner or team member named on your homepage or About page."
+      : "We couldn't find a founder, owner or team member named on your homepage.",
     "Anonymous businesses are harder to trust and harder to verify. A named person creates a second, checkable identity linked to yours.",
     "Add a short About section naming who runs the business, and link their LinkedIn profile.");
 
@@ -835,10 +873,10 @@ function analyze(ctx){
     "No meta description found.",
     "This is the summary shown under your link in results, and a quick signal of what the page covers.",
     "Add a one-sentence description of about 150 characters.");
-  else if(md.length > 165) add("read","warn",2,4,"Your description is too long",
+  else if(md.length > 200) add("read","info",0,0,"Your description runs long",
     "Description is " + md.length + " characters.",
-    "It will be cut off mid-sentence when displayed.",
-    "Trim to roughly 155 characters.");
+    "Search results usually show the first 155-160 characters, so the tail may be cut off in display. It does not stop an AI engine reading the whole thing, so this is cosmetic rather than a visibility problem.",
+    "Optional: front-load the first sentence so the important part survives truncation.");
   else add("read","ok",4,4,"Your page has a good description",
     "Description is " + md.length + " characters.","Clear, complete summary of the page.","");
 
@@ -948,10 +986,10 @@ function analyze(ctx){
   if(extDomains.size >= 2) add("ans","ok",4,4,"You cite outside sources",
     "Links to " + extDomains.size + " other websites.",
     "The Princeton GEO study found citing credible sources lifted visibility by up to 115% for lower-ranked pages. Content that behaves like a good source gets treated like one.","");
-  else add("ans","warn",0,4,"You don't cite any sources",
+  else add("ans","info",0,0,"You don't link out to other sources",
     "No outbound links to other websites.",
-    "Pages that reference credible sources are treated as more trustworthy. Research measured up to a 115% visibility lift from adding citations.",
-    "Where you make a factual claim, link to the research, data or standard it comes from.");
+    "For publishers and content sites, citing sources measurably helps — Princeton's GEO study found up to a 115% lift. For a local services business with nothing to cite, this is normal and not a fault. Noted here only so you know it was looked at.",
+    "Only worth acting on if you publish articles or make factual claims that have a source worth linking.");
 
   var lists = doc.querySelectorAll("ul,ol,table").length;
   if(lists >= 2) add("ans","ok",3,3,"Your content is easy to scan",
@@ -1013,7 +1051,7 @@ function scoreAndRender(res, urlStr, manual){
   $("verdictText").textContent = txt;
 
   /* record which site was checked and how it scored (domain + score only) */
-  var topIssues = C.filter(function(c){ return c.sev !== "ok"; })
+  var topIssues = C.filter(function(c){ return c.sev !== "ok" && c.sev !== "info"; })
                    .sort(function(a,b){ if(a.sev !== b.sev) return a.sev === "crit" ? -1 : 1;
                                         return (b.max-b.pts) - (a.max-a.pts); })
                    .slice(0,5).map(function(c){ return c.title; });
@@ -1044,7 +1082,7 @@ function scoreAndRender(res, urlStr, manual){
   });
 
   function card(c){
-    var icon = c.sev === "ok" ? "&#10003;" : "!";
+    var icon = c.sev === "ok" ? "&#10003;" : (c.sev === "info" ? "i" : "!");
     var body = '<div class="bd">'+
       '<div><span class="lab">Why it matters</span><p>'+c.why+'</p></div>'+
       (c.fix ? '<div class="fix"><span class="lab">How to fix it</span><p>'+c.fix+'</p></div>' : '')+
@@ -1053,16 +1091,20 @@ function scoreAndRender(res, urlStr, manual){
       '<span class="hd"><span class="t">'+esc(c.title)+'</span><span class="f">'+esc(c.found)+'</span></span>'+
       '<span class="chev">&rsaquo;</span></summary>'+body+'</details>';
   }
-  var bad = C.filter(function(c){ return c.sev !== "ok"; })
+  var bad = C.filter(function(c){ return c.sev !== "ok" && c.sev !== "info"; })
              .sort(function(a,b){
                if(a.sev !== b.sev) return a.sev === "crit" ? -1 : 1;
                return (b.max-b.pts) - (a.max-a.pts); });
-  var good = C.filter(function(c){ return c.sev === "ok"; });
+  var good  = C.filter(function(c){ return c.sev === "ok"; });
+  var notes = C.filter(function(c){ return c.sev === "info"; });
   $("issues").innerHTML = bad.length ? bad.map(card).join("") :
     '<div class="fnd ok"><div style="padding:19px 22px;display:flex;gap:15px"><span class="ic">&#10003;</span><span class="hd"><span class="t">Nothing significant to fix</span><span class="f">Every check passed. Focus on off-site authority next.</span></span></div></div>';
   $("issuesHead").textContent = bad.length ? "What's holding you back (" + bad.length + ")" : "Nothing holding you back";
   $("wins").innerHTML = good.map(card).join("");
   $("winsCount").textContent = good.length;
+  $("notes").innerHTML = notes.map(card).join("");
+  $("notesCount").textContent = notes.length;
+  $("notesWrap").hidden = !notes.length;
   resWrap.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
@@ -1156,11 +1198,25 @@ form.addEventListener("submit", function(ev){
   }).then(function(){
     paintSteps(2);
     /* one at a time - firing everything at once is what gets these free relays to throttle us */
-    return probe(ctx.sitemapUrl || (ctx.url.origin + "/sitemap.xml")).then(function(p){
-      if(p.state === "unknown"){ ctx.sitemapState = "unknown"; return; }
-      if(p.state === "absent" || !/<urlset|<sitemapindex/i.test(p.text)){ ctx.sitemapState = "absent"; return; }
+    var declared = !!ctx.sitemapUrl;                 /* robots.txt named one */
+    var smTarget = ctx.sitemapUrl || (ctx.url.origin + "/sitemap.xml");
+    return probe(smTarget).then(function(p){
+      /* A sitemap declared in robots.txt exists whether or not our relay can read it.
+         Reporting "no sitemap found" because a fetch or a parse failed is the single
+         most damaging thing this tool can do, so it is not a reachable state here. */
+      if(p.state !== "found"){
+        ctx.sitemapState = declared ? "declared" : (p.state === "absent" ? "absent" : "unknown");
+        if(declared) ctx.sitemap = smTarget;
+        return;
+      }
+      if(!looksSitemap(p.text)){
+        /* we fetched something but could not confirm its shape - that is our problem, not theirs */
+        ctx.sitemapState = declared ? "declared" : "unknown";
+        if(declared) ctx.sitemap = smTarget;
+        return;
+      }
       ctx.sitemapState = "found";
-      ctx.sitemap = ctx.sitemapUrl || (ctx.url.origin + "/sitemap.xml");
+      ctx.sitemap = smTarget;
       var lm = p.text.match(/<lastmod>([^<]+)<\/lastmod>/gi) || [], newest = 0;
       lm.slice(0,60).forEach(function(x){
         var d = Date.parse(x.replace(/<\/?lastmod>/gi,"")); if(d && d > newest) newest = d; });
@@ -1172,6 +1228,18 @@ form.addEventListener("submit", function(ev){
         ctx.llms = ctx.llmsState === "found";
       });
     });
+  }).then(function(){
+    /* the named-person check must not fail a site just because the founder is
+       named on the About page rather than the homepage */
+    var t = (ctx.doc.body && (ctx.doc.body.innerText || ctx.doc.body.textContent)) || "";
+    if(/founder|owner|ceo|director|proprietor/i.test(t.slice(0,6000))) return;
+    if(/"@type"\s*:\s*"Person"/i.test(t) ) return;
+    var au = findAboutUrl(ctx.doc, ctx.url.origin);
+    if(!au) return;
+    ctx.aboutTried = true;
+    return probe(au, 9000).then(function(p){
+      if(p.state === "found" && p.text) ctx.aboutText = p.text;
+    }).catch(function(){});
   }).then(function(){
     paintSteps(3);
     return new Promise(function(r){ setTimeout(r, 350); });
