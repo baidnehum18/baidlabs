@@ -760,7 +760,7 @@ function analyze(ctx){
       "A sitemap helps crawlers discover every page rather than only the ones they stumble across.","");
   } else if(ctx.sitemapState === "declared"){
     add("find","ok",4,4,"You have a sitemap",
-      "Your robots.txt points to " + esc(ctx.sitemap || "a sitemap") + ".",
+      "Your robots.txt points to " + (ctx.sitemap || "a sitemap") + ".",
       "A sitemap helps crawlers discover every page rather than only the ones they stumble across. We confirmed it from your robots.txt; our relay couldn't open the file itself, which is a limitation on our side, not a fault on yours.","");
   } else {
     add("find","warn",0,4,"No sitemap found",
