@@ -1,6 +1,5 @@
-# BAIDLABS — https://baidnehum18.github.io/baidlabs/
-# NOTE: crawlers only honour robots.txt at the domain ROOT.
-# The authoritative copy lives in the baidnehum18.github.io repo.
+# BAIDLABS — https://baidlabs.com/
+# Served from the domain root, so these directives are authoritative.
 # All crawlers welcome. This site is built to be cited.
 
 User-agent: *
@@ -43,4 +42,4 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-Sitemap: https://baidnehum18.github.io/baidlabs/sitemap.xml
+Sitemap: https://baidlabs.com/sitemap.xml

@@ -31,7 +31,7 @@ export default {
         redirect: "follow",
         headers: {
           // identify honestly; some hosts block unlabelled bots
-          "User-Agent": "Mozilla/5.0 (compatible; BaidlabsChecker/1.0; +https://baidnehum18.github.io/baidlabs/)",
+          "User-Agent": "Mozilla/5.0 (compatible; BaidlabsChecker/1.0; +https://baidlabs.com/)",
           "Accept": "text/html,application/xhtml+xml,text/plain,*/*",
         },
         cf: { cacheTtl: 300, cacheEverything: true },
