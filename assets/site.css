@@ -188,3 +188,18 @@ footer{border-top:1px solid var(--line);padding-top:56px;margin-top:90px;overflo
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---------- accessibility + consent (added 2026-09-06) ---------- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:12px 18px;border-radius:0 0 8px 0;font-size:.9rem;text-decoration:none}
+.skip-link:focus{left:0}
+.foot-legal{display:flex;gap:18px;flex-wrap:wrap}
+.foot-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* keyboard focus must stay visible even where the default outline is hidden for mouse users */
+.field input:focus-visible,.field textarea:focus-visible,.hc-row input:focus-visible,.url-box input:focus-visible,.lead-form input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0 4px;font-size:.85rem;line-height:1.5;color:var(--muted);cursor:pointer}
+.consent input{flex:0 0 auto;width:16px;height:16px;margin-top:2px;accent-color:var(--blue)}
+.cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:150;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 10px 40px rgba(16,16,20,.14);display:flex;gap:16px;align-items:center;flex-wrap:wrap;max-width:780px;margin:0 auto}
+.cc p{margin:0;flex:1 1 320px;font-size:.88rem;line-height:1.5;color:var(--muted)}
+.cc a{color:var(--blue)}
+.cc-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:560px){.cc{padding:16px}.cc-actions{width:100%}.cc-actions .btn{flex:1}}

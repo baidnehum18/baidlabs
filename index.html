@@ -3,13 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0RFKMBR3DQ"></script>
+<!-- Google Analytics - not loaded until the visitor accepts analytics cookies -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0RFKMBR3DQ');
+  (function(){
+    var ID = "G-0RFKMBR3DQ";
+    window.__baidlabsLoadAnalytics = function(){
+      if (window.__gaLoaded) return; window.__gaLoaded = true;
+      var s = document.createElement("script");
+      s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + ID;
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", ID, { anonymize_ip: true });
+    };
+    try { if (localStorage.getItem("baidlabs_consent") === "granted") window.__baidlabsLoadAnalytics(); } catch(e){}
+  })();
 </script>
 <title>BAIDLABS — GEO & AEO Agency | Get Cited by AI Engines</title>
 <meta name="description" content="BAIDLABS is a GEO + AEO agency in Jaipur, India. We get brands cited and recommended by ChatGPT, Google AI Overviews, Perplexity, and other AI engines.">
@@ -546,9 +555,25 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
   .reveal{opacity:1;transform:none}
   .cite{opacity:1;transform:none}
 }
+
+/* ---------- accessibility + consent (added 2026-09-06) ---------- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:12px 18px;border-radius:0 0 8px 0;font-size:.9rem;text-decoration:none}
+.skip-link:focus{left:0}
+.foot-legal{display:flex;gap:18px;flex-wrap:wrap}
+.foot-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* keyboard focus must stay visible even where the default outline is hidden for mouse users */
+.field input:focus-visible,.field textarea:focus-visible,.hc-row input:focus-visible,.url-box input:focus-visible,.lead-form input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0 4px;font-size:.85rem;line-height:1.5;color:var(--muted);cursor:pointer}
+.consent input{flex:0 0 auto;width:16px;height:16px;margin-top:2px;accent-color:var(--blue)}
+.cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:150;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 10px 40px rgba(16,16,20,.14);display:flex;gap:16px;align-items:center;flex-wrap:wrap;max-width:780px;margin:0 auto}
+.cc p{margin:0;flex:1 1 320px;font-size:.88rem;line-height:1.5;color:var(--muted)}
+.cc a{color:var(--blue)}
+.cc-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:560px){.cc{padding:16px}.cc-actions{width:100%}.cc-actions .btn{flex:1}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="nav-in">
     <a class="logo" href="#top" aria-label="BAIDLABS home">
@@ -969,6 +994,7 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
         <div class="field"><label for="f-site">Company website</label><input id="f-site" name="website" type="url" placeholder="https://yourcompany.com"></div>
         <div class="field"><label for="f-msg">What do you sell — and who's asking about it?</label><textarea id="f-msg" name="message" placeholder="e.g. B2B payroll software. We want to show up when founders ask AI for payroll recommendations."></textarea></div>
         <div class="field" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden"><label for="f-company">Leave this empty</label><input id="f-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+        <label class="consent" for="f-consent"><input type="checkbox" id="f-consent" name="consent"><span>I agree that BAIDLABS may store these details in order to reply to my enquiry, as described in the <a href="legal/privacy.html">Privacy Policy</a>. We will not add you to a mailing list.</span></label>
         <button class="btn btn-ink" type="submit">Request my free audit <span class="arr">→</span></button>
         <p class="form-note">We read every request and reply within one business day — or write to <a href="mailto:nehum@baidlabs.com">nehum@baidlabs.com</a> · call <a href="tel:+919680196821">+91 96801 96821</a></p>
       </form>
@@ -1025,6 +1051,7 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
     <div class="foot-base">
       <span>© <span id="year">2026</span> BAIDLABS · Jaipur, India. All rights reserved.</span>
       <span>Built to be cited.</span>
+      <nav class="foot-legal" aria-label="Legal"><a href="legal/privacy.html">Privacy</a><a href="legal/terms.html">Terms</a><a href="legal/cookies.html">Cookies</a><a href="legal/refunds.html">Refunds</a></nav>
     </div>
   </div>
   <div class="ghost-wordmark" aria-hidden="true">BAIDLABS</div>
@@ -1195,6 +1222,14 @@ document.getElementById("auditForm").addEventListener("submit", function(ev){
   /* honeypot: bots fill hidden fields, humans do not */
   if (els.company && els.company.value) { showThanks(); return; }
 
+  var consent = document.getElementById("f-consent");
+  var cnote = f.querySelector(".form-note");
+  if (consent && !consent.checked) {
+    if (cnote) { cnote.textContent = "Please tick the consent box so we know we may store your details."; cnote.style.color = "#b3261e"; }
+    consent.focus();
+    return;
+  }
+
   var btn = f.querySelector('button[type="submit"]');
   var note = f.querySelector(".form-note");
   var label = btn.innerHTML;
@@ -1259,5 +1294,6 @@ if (heroCheck) heroCheck.addEventListener("submit", function(ev){
 document.getElementById("year").textContent = new Date().getFullYear();
 })();
 </script>
+<script src="assets/consent.js"></script>
 </body>
 </html>

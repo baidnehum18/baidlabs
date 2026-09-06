@@ -60,3 +60,18 @@ AI Visibility Checker — a free tool that scans any website URL and reports, in
 ## Case study
 
 MS Interio (https://baidlabs.com/work/ms-interio.html) — website design and build for a Jaipur interior design studio, engineered for AI visibility. Measurement baseline documented; outcome numbers published when available rather than estimated.
+
+## Legal
+
+- Privacy Policy: https://baidlabs.com/legal/privacy.html
+- Terms and Conditions: https://baidlabs.com/legal/terms.html
+- Cookie Policy: https://baidlabs.com/legal/cookies.html
+- Refund and Cancellation Policy: https://baidlabs.com/legal/refunds.html
+
+BAIDLABS collects only what a visitor types into a contact form, plus anonymous
+analytics that load only after the visitor accepts analytics cookies. No data is
+sold. The free AI visibility checker sends the public web address entered into it
+to a third-party relay service so the page can be read; nothing about the visitor
+is sent. BAIDLABS does not guarantee citations, rankings or traffic; the checker
+score is BAIDLABS' own opinion and is not an industry standard or endorsed by any
+AI provider.

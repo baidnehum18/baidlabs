@@ -17,13 +17,22 @@
 <meta name="twitter:description" content="Enter your website address and get an instant, plain-English report on whether AI engines can find, read and recommend your business.">
 <meta name="twitter:image" content="https://baidlabs.com/og.jpg">
 <meta name="theme-color" content="#fbfaf7">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0RFKMBR3DQ"></script>
+<!-- Google Analytics - not loaded until the visitor accepts analytics cookies -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0RFKMBR3DQ');
+  (function(){
+    var ID = "G-0RFKMBR3DQ";
+    window.__baidlabsLoadAnalytics = function(){
+      if (window.__gaLoaded) return; window.__gaLoaded = true;
+      var s = document.createElement("script");
+      s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + ID;
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", ID, { anonymize_ip: true });
+    };
+    try { if (localStorage.getItem("baidlabs_consent") === "granted") window.__baidlabsLoadAnalytics(); } catch(e){}
+  })();
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232438ff'/%3E%3Cpath d='M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z' fill='%23ffffff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -309,6 +318,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="nav-in">
     <a class="logo" href="../" aria-label="BAIDLABS home">
@@ -334,7 +344,7 @@
   <a href="../#about">About</a>
   <a href="../#contact" class="btn btn-ink">Book a free audit →</a>
 </div>
-<main>
+<main id="main">
 <section class="wrap tool-hero">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="../">BAIDLABS</a> <i>/</i> <span>Free AI visibility checker</span>
@@ -424,6 +434,7 @@
         <input id="l-email" type="email" placeholder="you@company.com" aria-label="Your work email" required>
       </div>
       <div class="lead-hp" aria-hidden="true"><label for="l-company">Leave this empty</label><input id="l-company" type="text" tabindex="-1" autocomplete="off"></div>
+      <label class="consent" for="l-consent"><input type="checkbox" id="l-consent" name="consent"><span>I agree that BAIDLABS may store my name, email and the site I checked in order to send this report, as described in the <a href="../legal/privacy.html">Privacy Policy</a>.</span></label>
       <button class="btn btn-ink" type="submit" id="leadGo">Email me the report <span class="arr">&rarr;</span></button>
       <p class="lead-note" id="leadNote">Your score and the site you checked are included so we can give you a useful answer.</p>
     </form>
@@ -1313,6 +1324,12 @@ document.getElementById("leadForm").addEventListener("submit", function(ev){
   }
   if($("l-company").value){ done(); return; }          /* honeypot */
 
+  var consent = $("l-consent");
+  if(consent && !consent.checked){
+    note.textContent = "Please tick the consent box so we know we may store your details.";
+    note.style.color = "#b3261e"; consent.focus(); return;
+  }
+
   var label = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = "Sending\u2026";
   note.style.color = ""; note.textContent = "Sending\u2026";
@@ -1400,6 +1417,7 @@ $("againBtn").addEventListener("click", function(){
     <div class="foot-base">
       <span>&copy; <span id="year">2026</span> BAIDLABS &middot; Jaipur, India. All rights reserved.</span>
       <span>Built to be cited.</span>
+      <nav class="foot-legal" aria-label="Legal"><a href="../legal/privacy.html">Privacy</a><a href="../legal/terms.html">Terms</a><a href="../legal/cookies.html">Cookies</a><a href="../legal/refunds.html">Refunds</a></nav>
     </div>
   </div>
 </footer>
@@ -1425,5 +1443,6 @@ $("againBtn").addEventListener("click", function(){
   document.getElementById("year").textContent=new Date().getFullYear();
 })();
 </script>
+<script src="../assets/consent.js"></script>
 </body>
 </html>
