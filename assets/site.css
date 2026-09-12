@@ -216,3 +216,20 @@ footer{border-top:1px solid var(--line);padding-top:56px;margin-top:90px;overflo
 .cc a{color:var(--blue)}
 .cc-actions{display:flex;gap:10px;flex-wrap:wrap}
 @media (max-width:560px){.cc{padding:16px}.cc-actions{width:100%}.cc-actions .btn{flex:1}}
+
+/* ==========================================================================
+   MOBILE FIXES — appended 12 Sep 2026. Nothing above 640px changes.
+   DUPLICATION WARNING: `html{scroll-padding-top}`, `.nav.scrolled` and the
+   mobile `h2` line-height below are ALSO in the inline <style> block of
+   index.html (the homepage does not load this file). Edit both together.
+   The .art-head/.art-body gutter rule is this file only — those classes are
+   used by the guide, legal, tool and 404 pages, never by the homepage. It is
+   scoped to <=640px on purpose: at desktop widths adding side padding would
+   shift the text column right by 24px, a visible desktop change.
+   ========================================================================== */
+html{scroll-padding-top:92px}
+@media (max-width:640px){
+  .nav.scrolled{background:rgba(251,250,247,.97)}
+  h2{line-height:1.15}
+  .art-head,.art-body{padding-left:var(--pad);padding-right:var(--pad)}
+}

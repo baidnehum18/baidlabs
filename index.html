@@ -586,6 +586,24 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
 .cc a{color:var(--blue)}
 .cc-actions{display:flex;gap:10px;flex-wrap:wrap}
 @media (max-width:560px){.cc{padding:16px}.cc-actions{width:100%}.cc-actions .btn{flex:1}}
+
+/* ==========================================================================
+   MOBILE FIXES — appended 12 Sep 2026. Nothing above 640px changes.
+   DUPLICATION WARNING: `html{scroll-padding-top}`, `.nav.scrolled` and the
+   mobile `h2` line-height below are ALSO in assets/site.css. This page does
+   not load site.css, and the other pages do not load this <style> block, so
+   both copies must be edited together. The proper fix is to move this inline
+   CSS into site.css — that refactor has not been done.
+   ========================================================================== */
+html{scroll-padding-top:92px}
+@media (max-width:640px){
+  .stats-grid{grid-template-columns:1fr;gap:12px}
+  .nav.scrolled{background:rgba(251,250,247,.97)}
+  .stat .s a,.res-item .src a{font-size:12px;display:inline-block;padding:10px 0;min-height:44px}
+  .hc-tag,.demo-tag,.live,.step .dur,.work-info .idx{font-size:12px}
+  h2{line-height:1.15}
+  #f-consent{width:22px;height:22px}
+}
 </style>
 </head>
 <body>
