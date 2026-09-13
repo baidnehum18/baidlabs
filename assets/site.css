@@ -233,3 +233,11 @@ html{scroll-padding-top:92px}
   h2{line-height:1.15}
   .art-head,.art-body{padding-left:var(--pad);padding-right:var(--pad)}
 }
+
+/* ==========================================================================
+   Appended 13 Sep 2026. `img,svg{max-width:100%}` above sets no height, so
+   an <img> carrying width/height attributes renders stretched: the width is
+   capped to the column while the height attribute still applies in full.
+   Scoped to .art-body so nothing else on any page is touched.
+   ========================================================================== */
+.art-body img{height:auto}
