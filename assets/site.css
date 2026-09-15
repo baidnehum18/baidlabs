@@ -241,3 +241,17 @@ html{scroll-padding-top:92px}
    Scoped to .art-body so nothing else on any page is touched.
    ========================================================================== */
 .art-body img{height:auto}
+
+/* ==========================================================================
+   Appended 15 Sep 2026. `table{min-width:520px}` further up forces every
+   table to scroll sideways inside the 325px column at 375px, which hides the
+   third column of the comparison tables. Every table on the site is three
+   columns, so at <=640px drop the floor, tighten the cells and let them wrap.
+   Above 640px the 520px minimum and the original padding still apply.
+   ========================================================================== */
+@media (max-width:640px){
+  .tbl-wrap table{min-width:0}
+  .tbl-wrap th,.tbl-wrap td{padding:10px 11px;font-size:.8rem}
+  .tbl-wrap th{font-size:.58rem;letter-spacing:.06em}
+  .tbl-wrap td:first-child{overflow-wrap:anywhere}
+}
