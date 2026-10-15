@@ -62,7 +62,7 @@
       "url": "https://baidlabs.com/",
       "name": "BAIDLABS — GEO & AEO Agency | Get Cited by AI Engines",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-10-15",
       "isPartOf": { "@id": "https://baidlabs.com/#website" },
       "about": { "@id": "https://baidlabs.com/#org" },
       "inLanguage": "en"
@@ -79,6 +79,7 @@
       "email": "nehum@baidlabs.com",
       "telephone": "+91-9680196821",
       "foundingDate": "2026",
+      "priceRange": "₹₹",
       "founder": { "@id": "https://baidlabs.com/#founder" },
       "address": {
         "@type": "PostalAddress",
@@ -86,7 +87,11 @@
         "addressRegion": "Rajasthan",
         "addressCountry": "IN"
       },
-      "areaServed": "Worldwide",
+      "areaServed": [
+        {"@type": "City", "name": "Jaipur"},
+        {"@type": "City", "name": "Delhi"},
+        {"@type": "Country", "name": "India"}
+      ],
       "knowsAbout": ["Generative Engine Optimization", "Answer Engine Optimization", "AI Search Visibility", "Structured Data", "Digital PR", "Web Design and Development"]
     },
     {
@@ -111,7 +116,11 @@
       "name": "Generative Engine Optimization",
       "provider": { "@id": "https://baidlabs.com/#org" },
       "serviceType": "Generative & Answer Engine Optimization (GEO + AEO)",
-      "areaServed": "Worldwide",
+      "areaServed": [
+        {"@type": "City", "name": "Jaipur"},
+        {"@type": "City", "name": "Delhi"},
+        {"@type": "Country", "name": "India"}
+      ],
       "description": "AI visibility audits, answer-ready content engineering, technical GEO, authority building, share-of-voice monitoring across generative engines, and website design and rebuilds engineered for AI visibility."
     },
     {
@@ -277,6 +286,7 @@ section{padding:110px 0}
 .hero h1 .u{position:relative;white-space:nowrap}
 .hero h1 .u::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.09em;background:var(--blue);opacity:.25}
 .hero-sub{color:var(--muted);font-size:1.12rem;max-width:560px;margin-bottom:40px}
+.hero-tagline{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;color:var(--ink);margin:14px 0 22px}
 .hero-sub strong{color:var(--ink);font-weight:600}
 .hero-cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:20px}
 .hero-note{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--faint)}
@@ -514,6 +524,13 @@ footer{border-top:1px solid var(--line);padding-top:56px;overflow:hidden}
 .foot-col a,.foot-col span{display:block;color:var(--muted);font-size:.92rem;padding:4px 0;transition:color .2s}
 .foot-col a:hover{color:var(--blue)}
 .foot-base{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding:22px 0;color:var(--faint);font-size:.8rem}
+/* AI-assistant footer bands — appended 15 Oct 2026. No existing rule is modified; .foot-grid and .foot-cols are untouched. */
+.foot-ai{border-top:1px solid var(--line);padding:20px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.foot-ai h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0;font-weight:500;min-width:148px}
+.foot-ai a{display:inline-block;color:var(--muted);font-size:.84rem;padding:6px 13px;border:1px solid var(--line);border-radius:99px;transition:color .2s,border-color .2s}
+.foot-ai a:hover{color:var(--blue);border-color:var(--blue)}
+.foot-ai + .foot-ai{border-top:0;padding-top:0}
+@media (max-width:640px){.foot-ai h4{min-width:100%;margin-bottom:2px}.foot-ai + .foot-ai{padding-top:16px}.foot-ai a{padding:9px 13px}}
 .ghost-wordmark{
   font-family:var(--sans);font-weight:600;letter-spacing:-.04em;line-height:.78;
   font-size:clamp(4rem,16.5vw,15rem);text-align:center;color:var(--ink);opacity:.05;
@@ -650,7 +667,8 @@ html{scroll-padding-top:92px}
 <section class="hero" aria-label="Intro" style="padding-bottom:0">
   <div class="wrap">
     <p class="eyebrow reveal in"><b>BAIDLABS</b> Generative &amp; Answer Engine Optimization</p>
-    <h1 class="reveal in">Be the <em class="accent">answer</em>,<br>not a <span class="u">result</span>.</h1>
+    <h1 class="reveal in">Generative Engine Optimization for clinics and local businesses in <span class="u">Jaipur</span></h1>
+    <p class="hero-tagline reveal in">Be the <em class="accent">answer</em>, not a result.</p>
     <p class="hero-sub reveal in d1">Your customers stopped searching — they started asking. <strong>BAIDLABS</strong> gets your brand cited, quoted, and recommended by ChatGPT, Google AI Overviews, Perplexity, and every engine that answers for them. That's GEO + AEO, done properly.</p>
     <div class="hero-cta reveal in d2">
       <a href="#contact" class="btn btn-ink">Book your free GEO audit <span class="arr">→</span></a>
@@ -1082,6 +1100,22 @@ html{scroll-padding-top:92px}
           <a href="#contact">Book a free audit</a>
         </div>
       </div>
+    </div>
+    <div class="foot-ai">
+      <h4>Ask AI about us</h4>
+      <a target="_blank" rel="noopener" href="https://chatgpt.com/?prompt=I%27m%20looking%20for%20a%20Generative%20Engine%20Optimization%20agency%20in%20India.%20Tell%20me%20about%20BAIDLABS%20and%20what%20they%20do%3A%20https%3A%2F%2Fbaidlabs.com">ChatGPT</a>
+      <a target="_blank" rel="noopener" href="https://www.perplexity.ai/search/new?q=I%27m%20looking%20for%20a%20Generative%20Engine%20Optimization%20agency%20in%20India.%20Tell%20me%20about%20BAIDLABS%20and%20what%20they%20do%3A%20https%3A%2F%2Fbaidlabs.com">Perplexity</a>
+      <a target="_blank" rel="noopener" href="https://claude.ai/new?q=I%27m%20looking%20for%20a%20Generative%20Engine%20Optimization%20agency%20in%20India.%20Tell%20me%20about%20BAIDLABS%20and%20what%20they%20do%3A%20https%3A%2F%2Fbaidlabs.com">Claude</a>
+      <a target="_blank" rel="noopener" href="https://x.com/i/grok?text=I%27m%20looking%20for%20a%20Generative%20Engine%20Optimization%20agency%20in%20India.%20Tell%20me%20about%20BAIDLABS%20and%20what%20they%20do%3A%20https%3A%2F%2Fbaidlabs.com">Grok</a>
+      <a target="_blank" rel="noopener" href="https://www.google.com/search?udm=50&amp;aep=11&amp;q=I%27m%20looking%20for%20a%20Generative%20Engine%20Optimization%20agency%20in%20India.%20Tell%20me%20about%20BAIDLABS%20and%20what%20they%20do%3A%20https%3A%2F%2Fbaidlabs.com">Google AI Mode</a>
+      <a target="_blank" rel="noopener" href="https://copilot.microsoft.com/?q=I%27m%20looking%20for%20a%20Generative%20Engine%20Optimization%20agency%20in%20India.%20Tell%20me%20about%20BAIDLABS%20and%20what%20they%20do%3A%20https%3A%2F%2Fbaidlabs.com">Copilot</a>
+    </div>
+    <div class="foot-ai">
+      <h4>For AI assistants</h4>
+      <a href="llms.txt">llms.txt</a>
+      <a href="llms-full.txt">llms-full.txt</a>
+      <a href="llm-info.html">About BAIDLABS, for AI assistants</a>
+      <a href="https://google.com/preferences/source?q=baidlabs.com" target="_blank" rel="noopener">Tell Google to show more from BAIDLABS</a>
     </div>
     <div class="foot-base">
       <span>© <span id="year">2026</span> BAIDLABS · Jaipur, India. All rights reserved.</span>

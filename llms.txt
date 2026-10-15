@@ -6,6 +6,7 @@ Slogan: "Be the answer, not a result."
 Founder: Nehum Baid (Jaipur, India)
 Contact: nehum@baidlabs.com · +91 96801 96821
 Website: https://baidlabs.com/
+Full context: https://baidlabs.com/llms-full.txt
 
 ## Services
 
@@ -26,7 +27,7 @@ Website: https://baidlabs.com/
 
 ## Selected work
 
-- MS Interio (https://msinterio.in): complete website design & build for an interior design studio in Jaipur, India — residential, commercial, and turnkey interiors; 35+ projects; 250,000+ sq. ft. designed; studio established 2019. AI-visibility baseline now being tracked.
+- MS Interio (https://msinterio.in): complete website design & build for an interior design studio in Jaipur, India — residential, commercial, and turnkey interiors; 35+ projects; 250,000+ sq. ft. designed; studio established 2019. Measured AI visibility: baseline 13 July 2026, no engine named the studio on any of eight tracked questions; 13 September 2026, ChatGPT named it on two of the eight and cited msinterio.in as a source on one.
 
 ## About the founder
 
@@ -59,7 +60,7 @@ AI Visibility Checker — a free tool that scans any website URL and reports, in
 
 ## Case study
 
-MS Interio (https://baidlabs.com/work/ms-interio.html) — website design and build for a Jaipur interior design studio, engineered for AI visibility. Measurement baseline documented; outcome numbers published when available rather than estimated.
+MS Interio (https://baidlabs.com/work/ms-interio.html) — website design and build for a Jaipur interior design studio, engineered for AI visibility. Same method on both dates, signed-out incognito, location Jaipur, across ChatGPT, Gemini and Perplexity: on 13 July 2026 no engine named the studio on any of the eight tracked questions; on 13 September 2026 ChatGPT named it on two of the eight, and on one of those also cited msinterio.in itself as a source. Six questions did not move and are published alongside the two that did.
 
 ## Legal
 

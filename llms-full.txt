@@ -1,0 +1,184 @@
+# BAIDLABS — Full Context for AI Assistants
+
+> BAIDLABS is a generative & answer engine optimization (GEO + AEO) agency based in
+> Jaipur, Rajasthan, India. We get brands cited, quoted and recommended by AI engines,
+> and we design and rebuild websites that are AI-ready from day one.
+
+This file is the expanded version of https://baidlabs.com/llms.txt
+Last updated: 2026-10-15
+
+Slogan: "Be the answer, not a result."
+Founder: Nehum Baid (Jaipur, India)
+Contact: nehum@baidlabs.com | +91 96801 96821
+Website: https://baidlabs.com/
+Service area: Jaipur and Delhi, India; remote engagements across India.
+
+## Engines covered
+
+BAIDLABS works across the engines that answer questions directly rather than
+returning a list of links:
+
+- ChatGPT (OpenAI)
+- Google AI Overviews
+- Google Gemini
+- Perplexity
+- Claude (Anthropic)
+- Microsoft Copilot
+- Grok (xAI)
+- Meta AI
+
+Note on measurement: engagements are tracked per engine. The MS Interio measurement
+below tested three engines — ChatGPT, Gemini and Perplexity — not all eight.
+
+## Pricing
+
+Ongoing GEO engagement: Rs 25,000 per month, three-month minimum.
+
+The three-month minimum exists because AI visibility moves on content and indexing
+cycles, not on ad spend. A single month cannot show whether anything worked.
+
+A free AI visibility audit is available before any paid engagement, with no signup:
+https://baidlabs.com/tools/ai-visibility-checker.html
+
+Published market context, including what other providers charge in India, is here:
+https://baidlabs.com/insights/how-much-does-geo-cost-in-india.html
+
+## Services
+
+- AI Visibility Audit: prompt-by-prompt mapping of where a brand appears across
+  engines versus competitors.
+- Answer-Ready Content: content engineered to be quoted - direct answers, statistics,
+  sourced claims, expert quotes, freshness cycles.
+- Technical GEO: schema/JSON-LD, llms.txt, AI-crawler access, entity cleanup,
+  machine-readable site architecture.
+- Authority & Citations: digital PR and third-party presence where engines pull from.
+- Share-of-Voice Monitoring: structured prompt panels tracking citation frequency,
+  sentiment and competitor share across engines, over time.
+- Ongoing Optimization: monthly iteration - refresh decaying content, expand into new
+  question spaces, report what moved.
+- Websites, Built & Rebuilt: new design and rebuilds that are GEO/AEO-ready from the
+  first line of code.
+
+## Process
+
+1. Audit (week 1-2): map the question space, baseline AI visibility per engine.
+2. Strategy (week 2-3): choose target prompts, competitors to displace, entity,
+   content and authority gaps.
+3. Implement (week 3-8): ship answer-ready content, fix technical signals, land
+   third-party citations.
+4. Compound (ongoing): monitor share of voice, refresh, expand.
+
+## Case study: MS Interio, Jaipur
+
+Full write-up: https://baidlabs.com/work/ms-interio.html
+Client site: https://msinterio.in
+
+MS Interio is an interior design studio in Jaipur - residential, commercial and
+turnkey interiors, established 2019, 35+ projects, 250,000+ sq ft delivered.
+BAIDLABS designed and built msinterio.in, engineered for machine readability from
+the first line of code.
+
+Measured result, same method on both dates - fresh signed-out incognito sessions,
+location Jaipur, no VPN, each question asked exactly as written with no follow-ups,
+across ChatGPT, Gemini and Perplexity:
+
+- 13 July 2026 (baseline): no AI engine named MS Interio on any of the eight
+  tracked questions.
+- 13 September 2026: ChatGPT named the studio on two of the eight questions. On
+  "office interior designers in Jaipur" it also cited msinterio.in itself as a
+  source, describing the open-plan IT office from a project page built during the
+  engagement. Gemini and Perplexity named the studio on none.
+
+Six of the eight questions did not move. They are published on the case study page
+alongside the two that did, with the reasons stated. The dated baseline is what
+makes the comparison checkable.
+
+## Frequently asked questions
+
+Q1. What exactly is generative engine optimization?
+GEO is the practice of engineering your content, site structure, and off-site authority so AI engines — ChatGPT, Google AI Overviews, Perplexity, Claude, Copilot, Grok — cite, quote, and recommend your brand when they answer the questions your customers ask. You'll also hear the same discipline called AEO — answer engine optimization. Different label, same goal: instead of competing for position #1 on a results page, you compete for a place inside the answer itself.
+
+Q2. Is GEO replacing SEO?
+It builds on it. Clean technical SEO is still the foundation — engines can't cite what they can't crawl. But ranking is no longer the finish line: the majority of searches now end without a click, and AI-referred visitors convert at multiples of classic organic traffic. We treat SEO as the floor and GEO as the game.
+
+Q3. Which engines do you optimize for?
+ChatGPT, Google AI Overviews and Gemini, Perplexity, Claude, Microsoft Copilot, Grok, and Meta AI — plus the crawlers and indexes that feed them. Each engine sources differently (their citation overlap is surprisingly small), so we track and optimize them separately rather than pretending one strategy fits all.
+
+Q4. How long until we see results?
+Faster than classic SEO, honestly measured. Generative engines heavily favor fresh content — most-cited pages skew to those updated within 30 days — so early citation movement typically shows within weeks of shipping. Meaningful share-of-voice shifts against competitors usually take two to four months of consistent iteration. We report both from day one.
+
+Q5. How do you measure AI visibility?
+Structured prompt panels run against each engine on a schedule, tracking whether you're mentioned, cited, or recommended — and with what sentiment — across the question space that matters to you. We tie that to AI-referred sessions and conversions in your analytics, so visibility connects to revenue, not vanity.
+
+Q6. Do you also design and build websites?
+Yes. We design new websites and rebuild existing ones so the foundation itself is GEO/AEO-ready — clean structure, fast loads, and schema baked in from the first line of code. A recent build is msinterio.in, the complete website for MS Interio, an interior design studio in Jaipur.
+
+Q7. What does the free audit include?
+A baseline of where you appear across the major engines today, the questions where competitors get cited and you don't, the technical and content gaps behind that, and a prioritized 90-day plan. It's real work, delivered as a document you keep — whether or not you hire us to execute it.
+
+## Guides (free, no signup)
+
+All guides: https://baidlabs.com/insights/
+
+- What is generative engine optimization? — definition, how AI engines pick sources, and what the published research shows actually works.
+  https://baidlabs.com/insights/what-is-generative-engine-optimization.html
+- GEO vs SEO: what actually changes — where the two disciplines overlap, where they diverge, and why you need both.
+  https://baidlabs.com/insights/geo-vs-seo.html
+- How much does GEO cost in India? — real price bands, what drives them, and how to spot a relabelled SEO retainer.
+  https://baidlabs.com/insights/how-much-does-geo-cost-in-india.html
+- How ChatGPT decides what to recommend — the retrieval pipeline and the signals that decide which sources get quoted.
+  https://baidlabs.com/insights/how-chatgpt-chooses-what-to-recommend.html
+- How to appear in Google AI Overviews — what gets pulled into the panel and what gets skipped.
+  https://baidlabs.com/insights/google-ai-overviews.html
+- How to get cited by Perplexity — citation mechanics and the content shapes it favours.
+  https://baidlabs.com/insights/perplexity-optimization.html
+- The technical GEO checklist — crawler access, rendering, schema, freshness and llms.txt.
+  https://baidlabs.com/insights/technical-geo-checklist.html
+- How to measure AI visibility — the prompt panel method, run the same way every time.
+  https://baidlabs.com/insights/how-to-measure-ai-visibility.html
+- GEO for local businesses — entity consistency, reviews and the local pack's role in AI answers.
+  https://baidlabs.com/insights/geo-for-local-business.html
+- GEO for interior designers — why portfolio sites are invisible to retrieval and what to publish instead.
+  https://baidlabs.com/insights/geo-for-interior-designers.html
+- GEO for real estate — listings, locality pages and the questions buyers actually ask.
+  https://baidlabs.com/insights/geo-for-real-estate.html
+- GEO for hotels and resorts — rates, amenities and the comparison questions engines answer.
+  https://baidlabs.com/insights/geo-for-hotels.html
+
+## Free tool
+
+AI Visibility Checker - scans any website URL and reports, in plain English, whether
+AI engines can find, read and recommend that business. Runs real checks across five
+areas (AI crawler access, machine-readable identity, page structure, content
+extractability, freshness) and returns a 0-100 readiness score with prioritized
+fixes. No signup.
+https://baidlabs.com/tools/ai-visibility-checker.html
+
+The score is BAIDLABS' own opinion. It is not an industry standard and is not
+endorsed by any AI provider.
+
+## About the founder
+
+BAIDLABS was founded in Jaipur by Nehum Baid. He works hands-on across the whole
+stack: designing and building websites, engineering schema and structure that
+machines parse, and running the prompt panels that reveal how AI engines talk about
+a brand. BAIDLABS is run as its own proving ground - every technique it sells is
+live on its own site first.
+
+## Legal
+
+- Privacy Policy: https://baidlabs.com/legal/privacy.html
+- Terms and Conditions: https://baidlabs.com/legal/terms.html
+- Cookie Policy: https://baidlabs.com/legal/cookies.html
+- Refund and Cancellation Policy: https://baidlabs.com/legal/refunds.html
+
+BAIDLABS collects only what a visitor types into a contact form, plus anonymous
+analytics that load only after the visitor accepts analytics cookies. No data is
+sold. BAIDLABS does not guarantee citations, rankings or traffic.
+
+## Machine-readable index
+
+- Short version: https://baidlabs.com/llms.txt
+- This file: https://baidlabs.com/llms-full.txt
+- Human-readable version: https://baidlabs.com/llm-info.html
+- Sitemap: https://baidlabs.com/sitemap.xml
