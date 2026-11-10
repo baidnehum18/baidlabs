@@ -267,3 +267,23 @@ html{scroll-padding-top:92px}
 .foot-ai a:hover{color:var(--blue);border-color:var(--blue)}
 .foot-ai + .foot-ai{border-top:0;padding-top:0}
 @media (max-width:640px){.foot-ai h4{min-width:100%;margin-bottom:2px}.foot-ai + .foot-ai{padding-top:16px}.foot-ai a{padding:9px 13px}}
+
+/* ============================================================
+   FIXES — appended 10 Nov 2026. New rules only.
+   ============================================================ */
+/* 1. Gutters. `.art-head{padding:150px 0 0}` and friends are shorthands, so on an
+   element that is also `.wrap` they zeroed the side padding: between 641px and
+   ~1200px article text ran to the edge of the screen. Restores the .wrap gutter
+   at every width (the <=640px rule above did this for phones only). */
+.wrap.art-head,.wrap.art-body,.wrap.ins-hero,.wrap.tool-hero{padding-left:var(--pad);padding-right:var(--pad)}
+/* 2. Row headers in a key/value table should read as text, not as column labels. */
+.tbl-wrap tbody th{font-family:inherit;font-size:inherit;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:600;background:transparent;white-space:nowrap}
+/* 3. Without JavaScript nothing adds .in, so .reveal content stayed invisible. */
+@media (scripting:none){.reveal{opacity:1;transform:none}}
+/* 4. Tap targets for the small footer and breadcrumb links on phones. */
+@media (max-width:640px){
+  .foot-legal a{display:inline-block;padding:10px 0}
+  .crumbs{margin-bottom:12px}
+  .crumbs a{display:inline-block;padding:10px 0}
+  .tbl-wrap tbody th{white-space:normal;font-size:.8rem}
+}

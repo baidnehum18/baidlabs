@@ -12,9 +12,21 @@
     if (typeof window.__baidlabsLoadAnalytics === "function") window.__baidlabsLoadAnalytics();
   }
 
-  function base() {
-    /* legal pages sit one level down, like insights and tools */
-    return /\/(insights|tools|work|legal)\//.test(location.pathname) ? "../" : "";
+  /* Analytics loader. index.html and the checker define their own copy in <head>;
+     every other page gets this one, so an accepted choice is honoured site-wide
+     and not only on the two pages that happened to carry the snippet. */
+  var GA_ID = "G-0RFKMBR3DQ";
+  if (typeof window.__baidlabsLoadAnalytics !== "function") {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== "function") window.gtag = function () { window.dataLayer.push(arguments); };
+    window.__baidlabsLoadAnalytics = function () {
+      if (window.__gaLoaded) return; window.__gaLoaded = true;
+      var s = document.createElement("script");
+      s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(s);
+      window.gtag("js", new Date());
+      window.gtag("config", GA_ID, { anonymize_ip: true });
+    };
   }
 
   function banner() {
@@ -25,7 +37,7 @@
     el.setAttribute("aria-label", "Cookie choice");
     el.innerHTML =
       '<p>We use analytics cookies only if you say yes. Nothing is set until you choose, and we never run advertising or tracking pixels. ' +
-      '<a href="' + base() + 'legal/cookies.html">Cookie Policy</a></p>' +
+      '<a href="/legal/cookies.html">Cookie Policy</a></p>' +
       '<div class="cc-actions">' +
       '<button type="button" class="btn btn-line btn-sm" id="ccNo">Decline</button>' +
       '<button type="button" class="btn btn-ink btn-sm" id="ccYes">Accept analytics</button>' +

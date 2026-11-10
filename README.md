@@ -31,8 +31,10 @@ for every new response.
 
 ## Analytics
 
-Google Analytics 4 (`G-0RFKMBR3DQ`) is loaded in `<head>`. A `generate_lead`
-event fires on every successful form submission.
+Google Analytics 4 (`G-0RFKMBR3DQ`) loads only after a visitor accepts analytics
+in the cookie banner. The loader lives in `assets/consent.js`, which every page
+includes; `index.html` and the checker also carry a copy in `<head>`. A
+`generate_lead` event fires on every successful form submission.
 
 ## Moving to a custom domain
 

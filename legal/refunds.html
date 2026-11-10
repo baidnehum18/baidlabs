@@ -33,6 +33,7 @@
 <header class="nav" id="nav">
   <div class="nav-in">
     <a class="logo" href="../" aria-label="BAIDLABS home">
+      <span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M22 14h15a11 11 0 0 1 7 19.5A11.5 11.5 0 0 1 38 54H22V14zm9 9v8h6.5a4 4 0 0 0 0-8H31zm0 16v7h7.5a3.5 3.5 0 0 0 0-7H31z" fill="#ffffff"/></svg></span>
       <span>BAID<span>LABS</span></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -46,6 +47,14 @@
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../#services">Services</a>
+  <a href="../#work">Work</a>
+  <a href="../insights/">Insights</a>
+  <a href="../tools/ai-visibility-checker.html">Free checker</a>
+  <a href="../#about">About</a>
+  <a href="../#contact" class="btn btn-ink">Book a free audit &rarr;</a>
+</div>
 
 <main id="main">
 <article class="wrap art-head">
@@ -108,7 +117,32 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+<script>
+(function(){
+  var nav=document.getElementById("nav");
+  function s(){nav.classList.toggle("scrolled",window.scrollY>10)}
+  window.addEventListener("scroll",s,{passive:true});s();
+  var b=document.getElementById("burger"),m=document.getElementById("mobileMenu");
+  function setMenu(o){
+    m.classList.toggle("open",o);b.classList.toggle("open",o);
+    b.setAttribute("aria-expanded",o?"true":"false");
+    b.setAttribute("aria-label",o?"Close menu":"Open menu");
+    document.body.style.overflow=o?"hidden":"";
+  }
+  b.addEventListener("click",function(){setMenu(!m.classList.contains("open"))});
+  m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){setMenu(false)})});
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&m.classList.contains("open")){setMenu(false);b.focus()}
+  });
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},
+      {threshold:.1,rootMargin:"0px 0px -30px 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  } else {document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")})}
+  document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
 <script src="../assets/consent.js"></script>
 </body>
 </html>

@@ -622,6 +622,20 @@ html{scroll-padding-top:92px}
   h2{line-height:1.15}
   #f-consent{width:22px;height:22px}
 }
+/* ==========================================================================
+   FIXES — appended 10 Nov 2026. New rules only.
+   ========================================================================== */
+/* The checker card is a grid; its children defaulted to min-width:auto, so the
+   URL field's intrinsic width pushed the card 13px past a 375px screen. */
+.hero-check>*,.hc-form>*{min-width:0}
+/* `.demo-band{padding:26px 0 0}` zeroed the .wrap gutter, so the demo card ran
+   edge to edge below ~930px. */
+.wrap.demo-band{padding-left:var(--pad);padding-right:var(--pad)}
+/* Without JavaScript nothing adds .in, so .reveal content stayed invisible. */
+@media (scripting:none){.reveal,.cite{opacity:1;transform:none}}
+@media (max-width:640px){
+  .foot-legal a{display:inline-block;padding:10px 0}
+}
 </style>
 </head>
 <body>
@@ -1138,17 +1152,19 @@ window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 
 var burger = document.getElementById("burger");
 var menu = document.getElementById("mobileMenu");
-burger.addEventListener("click", function(){
-  var open = menu.classList.toggle("open");
+function setMenu(open){
+  menu.classList.toggle("open", open);
   burger.classList.toggle("open", open);
-  burger.setAttribute("aria-expanded", open);
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+  burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   document.body.style.overflow = open ? "hidden" : "";
-});
+}
+burger.addEventListener("click", function(){ setMenu(!menu.classList.contains("open")); });
 menu.querySelectorAll("a").forEach(function(a){
-  a.addEventListener("click", function(){
-    menu.classList.remove("open"); burger.classList.remove("open");
-    burger.setAttribute("aria-expanded","false"); document.body.style.overflow = "";
-  });
+  a.addEventListener("click", function(){ setMenu(false); });
+});
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); burger.focus(); }
 });
 
 /* ---------- hero answer demo ---------- */
@@ -1194,6 +1210,31 @@ function htmlFor(segs, upto){
   return out;
 }
 function totalLen(segs){ return segs.reduce(function(s,x){ return s + x.t.length; }, 0); }
+
+/* Reserve the height of the tallest scenario, so the card does not grow and
+   shrink as the answer types out. On a phone that moved everything below it
+   by ~90px every few seconds. Measured on a hidden clone, re-run on resize. */
+function reserveDemo(){
+  var body = aEl.closest ? aEl.closest(".ac-body") : null;
+  if (!body || !body.offsetWidth) return;
+  body.style.minHeight = "";
+  var c = body.cloneNode(true);
+  Array.prototype.forEach.call(c.querySelectorAll("[id]"), function(n){ n.removeAttribute("id"); });
+  c.style.cssText = "position:absolute;visibility:hidden;pointer-events:none;left:-9999px;top:0;width:" + body.offsetWidth + "px";
+  body.parentNode.appendChild(c);
+  var q = c.querySelector(".ac-q p"), a = c.querySelector(".ac-a .txt"), ci = c.querySelector(".ac-cites"), max = 0;
+  SCENARIOS.forEach(function(sc){
+    q.textContent = sc.q;
+    a.innerHTML = htmlFor(sc.a, totalLen(sc.a)) + '<span class="caret"></span>';
+    ci.innerHTML = sc.cites.map(function(n){ return '<span class="cite"><i></i> ' + n + '</span>'; }).join("");
+    max = Math.max(max, c.offsetHeight);
+  });
+  body.parentNode.removeChild(c);
+  if (max) body.style.minHeight = max + "px";
+}
+reserveDemo();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserveDemo);
+var rzT; window.addEventListener("resize", function(){ clearTimeout(rzT); rzT = setTimeout(reserveDemo, 150); });
 
 if (reduced) {
   var s0 = SCENARIOS[0];
@@ -1280,6 +1321,9 @@ var FORM_FIELDS = {
 document.getElementById("auditForm").addEventListener("submit", function(ev){
   ev.preventDefault();
   var f = ev.target;
+  /* type="url" rejects "mycompany.com" outright; add the scheme people leave off */
+  var w = f.elements.website, wv = w ? w.value.trim() : "";
+  if (wv && !/^[a-z][a-z0-9+.-]*:\/\//i.test(wv)) w.value = "https://" + wv;
   if (!f.reportValidity()) return;
 
   var els  = f.elements;
@@ -1354,11 +1398,18 @@ var heroCheck = document.getElementById("heroCheck");
 if (heroCheck) heroCheck.addEventListener("submit", function(ev){
   ev.preventDefault();
   var v = document.getElementById("heroUrl").value.trim().replace(/^https?:\/\//i, "").replace(/\/+$/, "");
-  if (!/^[a-z0-9.-]+\.[a-z]{2,}/i.test(v)) { document.getElementById("heroUrl").focus(); return; }
+  var hu = document.getElementById("heroUrl");
+  if (!/^[a-z0-9.-]+\.[a-z]{2,}/i.test(v)) {
+    hu.setCustomValidity("Enter a website address, like yourcompany.com");
+    hu.reportValidity(); hu.focus(); return;
+  }
   if (typeof gtag === "function")
     gtag("event", "hero_check_start", { checked_domain: v });
   location.href = "tools/ai-visibility-checker.html?url=" + encodeURIComponent(v);
 });
+
+var heroUrlEl = document.getElementById("heroUrl");
+if (heroUrlEl) heroUrlEl.addEventListener("input", function(){ heroUrlEl.setCustomValidity(""); });
 
 document.getElementById("year").textContent = new Date().getFullYear();
 })();

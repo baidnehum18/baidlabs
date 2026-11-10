@@ -289,13 +289,17 @@
   function s(){nav.classList.toggle("scrolled",window.scrollY>10)}
   window.addEventListener("scroll",s,{passive:true});s();
   var b=document.getElementById("burger"),m=document.getElementById("mobileMenu");
-  b.addEventListener("click",function(){
-    var o=m.classList.toggle("open");b.classList.toggle("open",o);
-    b.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":"";
+  function setMenu(o){
+    m.classList.toggle("open",o);b.classList.toggle("open",o);
+    b.setAttribute("aria-expanded",o?"true":"false");
+    b.setAttribute("aria-label",o?"Close menu":"Open menu");
+    document.body.style.overflow=o?"hidden":"";
+  }
+  b.addEventListener("click",function(){setMenu(!m.classList.contains("open"))});
+  m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){setMenu(false)})});
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&m.classList.contains("open")){setMenu(false);b.focus()}
   });
-  m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
-    m.classList.remove("open");b.classList.remove("open");document.body.style.overflow="";
-  })});
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},
