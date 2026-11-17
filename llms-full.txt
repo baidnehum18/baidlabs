@@ -5,13 +5,13 @@
 > and we design and rebuild websites that are AI-ready from day one.
 
 This file is the expanded version of https://baidlabs.com/llms.txt
-Last updated: 2026-10-15
+Last updated: 2026-11-17
 
 Slogan: "Be the answer, not a result."
 Founder: Nehum Baid (Jaipur, India)
 Contact: nehum@baidlabs.com | +91 96801 96821
 Website: https://baidlabs.com/
-Service area: Jaipur and Delhi, India; remote engagements across India.
+Service area: Worldwide. Based in Jaipur, India; engagements run remotely.
 
 ## Engines covered
 
